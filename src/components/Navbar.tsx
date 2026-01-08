@@ -13,7 +13,10 @@ const Navbar = () => {
                 </a>
                 <i
                     onClick={toggleDarkMode}
-                    className="md:text-3xl sm:text-2xl text-xl text-gray-200 sm:ml-4 ml-2 cursor-pointer fa-brands fa-linktree"
+                    className={`${
+                        darkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'
+                    }
+                    md:text-3xl sm:text-2xl text-xl text-gray-200 sm:ml-4 ml-2 cursor-pointer fa-solid fa-sun`}
                 ></i>
             </div>
             <div>

@@ -90,7 +90,7 @@ const Hero = () => {
                 <div className="lg:w-[600px] md:w-[500px] w-[350px] left-1/2 top-1/4 -translate-x-1/2 absolute -z-10">
                     <img
                         style={{ opacity: imageOpacity }}
-                        src="images/road.png"
+                        src="images/road1.png"
                         alt="Image"
                         className="w-full mx-auto transition-opacity duration-300"
                     />
