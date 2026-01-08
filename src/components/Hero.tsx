@@ -94,6 +94,9 @@ const Hero = () => {
                         alt="Image"
                         className="w-full mx-auto transition-opacity duration-300"
                     />
+                    <span className="xl:text-xs md:text-[10px] text-[8px] font-bold tracking-wide text-yellow-500 absolute top-8 md:left-6 -rotate-[5.5deg] animate-bounce">
+                        Looking for new challenges
+                    </span>
                 </div>
             </div>
         </div>
