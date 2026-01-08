@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
-import { letters, professionTexts } from '../data'
+import { letters, professionTexts, socialIcons } from '../data'
 
 const Hero = () => {
     const [hoveredLetter, setHoveredLetter] = useState<number | null>(null)
@@ -8,6 +8,7 @@ const Hero = () => {
         professionTexts[0]
     )
     const [isRotating, setIsRotating] = useState<boolean>(false)
+    const [imageOpacity, setImageOpacity] = useState<number>(0.5)
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -21,7 +22,7 @@ const Hero = () => {
         return () => clearInterval(intervalId)
     }, [])
     return (
-        <div className="w-full h-dvh flex flex-col justify-center items-center">
+        <div className="w-full h-dvh flex flex-col justify-center items-center isolate">
             <Navbar />
             <div className="flex flex-col md:items-center items-start xl:gap-y-10 gap-y-3 xl:mb-0 md:mb-20 mb-0">
                 <h1
@@ -66,6 +67,34 @@ const Hero = () => {
                         Web Developer
                     </span>
                 </h1>
+                <button
+                    className="flex justify-between items-center bg-gray-200 xl:w-[400px] md:w-[300px] w-[270px]
+                md:py-1 py-0 md:px-4 px-2 xl:text-2xl md:text-xl text-base text-gray-900 tracking-widest
+                rounded-r-4xl md:ml-0 mx-auto"
+                    onMouseEnter={() => setImageOpacity(0.8)}
+                    onMouseLeave={() => setImageOpacity(0.5)}
+                >
+                    Read my story <i className="fa-solid fa-book-open"></i>
+                </button>
+                <div className="flex md:gap-12 gap-2 mr-auto">
+                    {socialIcons.map((icon, index) => (
+                        <a
+                            key={index}
+                            href="#"
+                            className="text-yellow-500 hover:text-white xl:text:3xl md:text-2xl transition-colors duration-500"
+                        >
+                            <i className={icon.icon}></i>
+                        </a>
+                    ))}
+                </div>
+                <div className="lg:w-[600px] md:w-[500px] w-[350px] left-1/2 top-1/4 -translate-x-1/2 absolute -z-10">
+                    <img
+                        style={{ opacity: imageOpacity }}
+                        src="images/road.png"
+                        alt="Image"
+                        className="w-full mx-auto transition-opacity duration-300"
+                    />
+                </div>
             </div>
         </div>
     )
