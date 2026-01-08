@@ -27,8 +27,7 @@ const Hero = () => {
             <div className="flex flex-col md:items-center items-start xl:gap-y-10 gap-y-3 xl:mb-0 md:mb-20 mb-0">
                 <h1
                     className="flex flex-col xl:space-y-8 md:space-y-4 space-y-2
-                xl:text-6xl md:text-4xl text-3xl md:font-normal font-bolder
-                text-yellow-500 "
+                xl:text-6xl md:text-4xl text-3xl md:font-normal font-bolder"
                 >
                     <span className="flex">
                         {letters.map((letter, index) => (
@@ -68,9 +67,9 @@ const Hero = () => {
                     </span>
                 </h1>
                 <button
-                    className="flex justify-between items-center bg-gray-200 xl:w-[400px] md:w-[300px] w-[270px]
-                md:py-1 py-0 md:px-4 px-2 xl:text-2xl md:text-xl text-base text-gray-900 tracking-widest
-                rounded-r-4xl md:ml-0 mx-auto"
+                    className="flex justify-between items-center bg-gray-900 dark:bg-gray-200 xl:w-[400px] md:w-[300px] w-[270px]
+                md:py-1 py-0 md:px-4 px-2 xl:text-2xl md:text-xl text-base text-white dark:text-gray-900 tracking-widest
+                rounded-r-4xl md:ml-0 mx-auto transition-colors duration-500"
                     onMouseEnter={() => setImageOpacity(0.8)}
                     onMouseLeave={() => setImageOpacity(0.5)}
                 >
@@ -81,7 +80,8 @@ const Hero = () => {
                         <a
                             key={index}
                             href="#"
-                            className="text-yellow-500 hover:text-white xl:text:3xl md:text-2xl transition-colors duration-500"
+                            className="dark:hover:text-white hover:text-gray-900 text-red-500 dark:text-yellow-500 xl:text:3xl 
+                            md:text-2xl transition-colors duration-500"
                         >
                             <i className={icon.icon}></i>
                         </a>
@@ -94,7 +94,10 @@ const Hero = () => {
                         alt="Image"
                         className="w-full mx-auto transition-opacity duration-300"
                     />
-                    <span className="xl:text-xs md:text-[10px] text-[8px] font-bold tracking-wide text-yellow-500 absolute top-8 md:left-6 -rotate-[5.5deg] animate-bounce">
+                    <span
+                        className="xl:text-xs md:text-[10px] text-[8px] font-bold
+                     tracking-wide absolute top-8 md:left-6 -rotate-[5.5deg] animate-bounce"
+                    >
                         Looking for new challenges
                     </span>
                 </div>
