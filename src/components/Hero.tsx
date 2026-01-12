@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import { letters, professionTexts, socialIcons } from '../data'
+import SocialLinks from './SocialLinks'
 
 const Hero = () => {
     const [hoveredLetter, setHoveredLetter] = useState<number | null>(null)
@@ -75,18 +76,7 @@ const Hero = () => {
                 >
                     Read my story <i className="fa-solid fa-book-open"></i>
                 </button>
-                <div className="flex md:gap-12 gap-2 mr-auto">
-                    {socialIcons.map((icon, index) => (
-                        <a
-                            key={index}
-                            href="#"
-                            className="dark:hover:text-white hover:text-gray-900 text-red-500 dark:text-yellow-500 xl:text:3xl 
-                            md:text-2xl transition-colors duration-500"
-                        >
-                            <i className={icon.icon}></i>
-                        </a>
-                    ))}
-                </div>
+                <SocialLinks icons={socialIcons} />
                 <div className="lg:w-[600px] md:w-[500px] w-[350px] left-1/2 top-1/4 -translate-x-1/2 absolute -z-10">
                     <img
                         style={{ opacity: imageOpacity }}

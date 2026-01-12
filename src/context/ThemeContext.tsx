@@ -5,11 +5,7 @@ import {
     useState,
     type ReactNode,
 } from 'react'
-
-interface ThemeContextType {
-    darkMode: boolean
-    toggleDarkMode: () => void
-}
+import type { ThemeContextType } from '../types'
 
 const THEME_STORAGE_KEY = 'theme-preference'
 

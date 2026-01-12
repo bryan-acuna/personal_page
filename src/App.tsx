@@ -1,4 +1,5 @@
 import Hero from './components/Hero'
+import Projects from './components/Projects'
 import { ThemeProvider } from './context/ThemeContext'
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
         <ThemeProvider>
             <div className="min-h-screen bg-white  dark:bg-gray-900 text-red-500 dark:text-yellow-500 transition-colors duration-500">
                 <Hero />
+                <Projects />
             </div>
         </ThemeProvider>
     )

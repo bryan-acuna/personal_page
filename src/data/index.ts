@@ -1,4 +1,6 @@
-export const letters = [
+import type { Letter, SocialIcon } from '../types'
+
+export const letters: Letter[] = [
     {
         char: 'H',
         img: 'https://plus.unsplash.com/premium_photo-1672115680958-54438df0ab82?q=80&w=1484&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -26,10 +28,14 @@ export const letters = [
     },
 ]
 
-export const professionTexts = ['a Front End', 'a Full Stack']
+export const professionTexts = ['a Front End', 'a Full Stack'] as const
 
-export const socialIcons = [
-    { icon: 'fa-brands fa-instagram' },
-    { icon: 'fa-brands fa-youtube' },
-    { icon: 'fa-brands fa-linkedin' },
+export const socialIcons: SocialIcon[] = [
+    { icon: 'fa-brands fa-instagram', url: '', label: 'Instagram' },
+    { icon: 'fa-brands fa-youtube', url: '', label: 'Youtube' },
+    {
+        icon: 'fa-brands fa-linkedin',
+        url: 'https://www.linkedin.com/feed/',
+        label: 'Linkedin',
+    },
 ]
