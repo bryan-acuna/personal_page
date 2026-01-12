@@ -1,4 +1,5 @@
-import type { Letter, SocialIcon } from '../types'
+import { BsInstagram, BsLinkedin } from 'react-icons/bs'
+import type { Letter, ProjectCard, SocialIcon } from '../types'
 
 export const letters: Letter[] = [
     {
@@ -31,11 +32,40 @@ export const letters: Letter[] = [
 export const professionTexts = ['a Front End', 'a Full Stack'] as const
 
 export const socialIcons: SocialIcon[] = [
-    { icon: 'fa-brands fa-instagram', url: '', label: 'Instagram' },
-    { icon: 'fa-brands fa-youtube', url: '', label: 'Youtube' },
     {
-        icon: 'fa-brands fa-linkedin',
-        url: 'https://www.linkedin.com/feed/',
+        icon: 'BsInstagram',
+        url: 'https://instagram.com/your-username',
+        label: 'Instagram',
+    },
+    {
+        icon: 'FaXTwitter',
+        url: 'https://twitter.com/your-username',
+        label: 'Twitter',
+    },
+    {
+        icon: 'BsLinkedin',
+        url: 'https://www.linkedin.com/in/bryanacuna/',
         label: 'Linkedin',
+    },
+]
+
+export const projectsCards: ProjectCard[] = [
+    {
+        id: crypto.randomUUID(),
+        icon: 'MdOutlineSportsSoccer',
+        title: '1',
+        description: 'lorem',
+    },
+    {
+        id: crypto.randomUUID(),
+        icon: 'FaStore',
+        title: '2',
+        description: 'lorem',
+    },
+    {
+        id: crypto.randomUUID(),
+        icon: 'FaIdCard',
+        title: '3',
+        description: 'lorem',
     },
 ]

@@ -21,7 +21,7 @@ const Navbar = () => {
             </div>
             <div>
                 <a
-                    className="relative group text-red-500 lg:text-lg md:text-base text-sm font-light lg:mr-12 mr-8 tracking-wide "
+                    className="relative group dark:text-yellow-500 text-red-500 lg:text-lg md:text-base text-sm font-light lg:mr-12 mr-8 tracking-wide "
                     href="#"
                 >
                     Home{' '}
