@@ -21,13 +21,6 @@ export const iconMap: Record<IconName, IconType> = {
     FaReact,
 } as const
 
-export const getIcon = (name: IconName): IconType => {
-    const Icon = iconMap[name]
-    if (!Icon) {
-        console.warn(
-            `Icon "${name}" not found in iconMap. Falling back to React default.`
-        )
-        return FaReact
-    }
-    return Icon
+export function getIcon(name: IconName): IconType {
+    return iconMap[name] || FaReact
 }

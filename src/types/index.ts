@@ -1,7 +1,7 @@
 import type { IconType } from 'react-icons'
 
 // 1. Define valid icon keys as a const-derived type
-export const VALID_ICONS = {
+export const ICON_MAP = {
     INSTAGRAM: 'BsInstagram',
     X_TWITTER: 'FaXTwitter',
     LINKEDIN: 'BsLinkedin',
@@ -12,7 +12,7 @@ export const VALID_ICONS = {
     REACT: 'FaReact',
 } as const
 
-export type IconName = (typeof VALID_ICONS)[keyof typeof VALID_ICONS]
+export type IconName = (typeof ICON_MAP)[keyof typeof ICON_MAP]
 
 export type ProjectCategory = 'Web' | 'Mobile' | 'Design'
 
@@ -48,4 +48,8 @@ export interface ProjectCard {
     githubUrl?: string
     liveUrl?: string
     imageUrl?: string
+}
+
+export interface ProjectCardProps {
+    project: ProjectCard[]
 }

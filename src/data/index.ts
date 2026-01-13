@@ -52,19 +52,22 @@ export const projectsCards: ProjectCard[] = [
     {
         id: crypto.randomUUID(),
         icon: 'MdOutlineSportsSoccer',
-        title: '1',
-        description: 'lorem',
+        title: 'Ecommerce Shop',
+        description:
+            'Full-stack e-commerce platform with product catalog, shopping cart, and secure checkout using Stripe integration.',
     },
     {
         id: crypto.randomUUID(),
         icon: 'FaStore',
-        title: '2',
-        description: 'lorem',
+        title: 'Iron Man Updates',
+        description:
+            'Real-time news aggregator delivering the latest Marvel updates, movie releases, and comic announcements with responsive design.',
     },
     {
         id: crypto.randomUUID(),
         icon: 'FaIdCard',
-        title: '3',
-        description: 'lorem',
+        title: 'Personal Page',
+        description:
+            'Modern portfolio website showcasing projects, skills, and experience with dark mode support and smooth animations.',
     },
 ]
