@@ -84,4 +84,4 @@ export const projectsCards: ProjectCard[] = [
     },
 ]
 
-const projectLinks = ['Github', 'Live Page', 'About']
+export const projectLinks = ['Github', 'Live Page', 'About']

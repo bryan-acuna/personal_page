@@ -1,4 +1,3 @@
-import React from 'react'
 import type { SocialIcon } from '../types'
 import { getIcon } from '../data/icon'
 import type { IconType } from 'react-icons'

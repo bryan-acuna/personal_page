@@ -1,4 +1,3 @@
-import React from 'react'
 import type { ProjectCard, ProjectCardProps } from '../../types'
 import { getIcon } from '../../data/icon'
 
