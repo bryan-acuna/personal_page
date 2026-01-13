@@ -56,7 +56,7 @@ const ProjectCards = ({ projects }: ProjectCardProps) => {
                                 className="text-2xl text-center text-gray-900 dark:text-white font-light
                             tracking-wide"
                             >
-                                Project
+                                Project Links
                             </h2>
                             {project.position.large === 'bottom' && (
                                 <div className="flex justify-between">

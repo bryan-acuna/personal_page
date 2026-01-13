@@ -7,7 +7,7 @@ const Projects = () => {
             <h2 className="text-4xl font-light mb-32 xl:mt0 mt-12">Projects</h2>
             <div
                 className="w-full xl:w-225 lg:w-200 md:w-150 grid lg:grid-cols-3
-            grid-cols-1 lg:gap-12 gap-18 xl:mb-0 mb-16"
+            grid-cols-1 lg:gap-12 gap-32 xl:mb-0 mb-16"
             >
                 <ProjectCards projects={projectsCards} />
             </div>

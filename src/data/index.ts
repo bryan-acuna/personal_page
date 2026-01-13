@@ -53,7 +53,7 @@ export const projectsCards: ProjectCard[] = [
         id: crypto.randomUUID(),
         position: {
             large: 'bottom',
-            small: 'top',
+            small: 'bottom',
         },
         icon: 'MdOutlineSportsSoccer',
         title: 'Ecommerce Shop',
@@ -64,7 +64,7 @@ export const projectsCards: ProjectCard[] = [
         id: crypto.randomUUID(),
         position: {
             large: 'bottom',
-            small: 'top',
+            small: 'bottom',
         },
         icon: 'FaStore',
         title: 'Iron Man Updates',
@@ -75,7 +75,7 @@ export const projectsCards: ProjectCard[] = [
         id: crypto.randomUUID(),
         position: {
             large: 'bottom',
-            small: 'top',
+            small: 'bottom',
         },
         icon: 'FaIdCard',
         title: 'Personal Page',

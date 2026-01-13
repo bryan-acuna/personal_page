@@ -12,7 +12,7 @@ const Hero = () => {
     const [imageOpacity, setImageOpacity] = useState<number>(0.5)
 
     return (
-        <div className="w-full h-dvh flex flex-col justify-center items-center isolate">
+        <div className="w-full h-dvh flex flex-col justify-center items-center isolate z-10 relative">
             <Navbar />
             <div className="flex flex-col md:items-center items-start xl:gap-y-10 gap-y-3 xl:mb-0 md:mb-20 mb-0">
                 <h1
