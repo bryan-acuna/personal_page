@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Navbar from './Navbar'
-import { letters, professionTexts, socialIcons } from '../data'
-import SocialLinks from './SocialLinks'
-import { useProfessionSwitcher } from '../hooks/useProfessionSwitcher'
+import Navbar from '../Navbar/Navbar'
+import { letters, professionTexts, socialIcons } from '../../data'
+import SocialLinks from '../SocialLinks'
+import { useProfessionSwitcher } from '../../hooks/useProfessionSwitcher'
 
 const Hero = () => {
     const { isRotating, currentProfession } =
