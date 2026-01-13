@@ -19,6 +19,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [darkMode, setDarkMode] = useState<boolean>(() => {
         const stored = localStorage.getItem(THEME_STORAGE_KEY)
         return stored === 'true'
+
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
     })
 
     useEffect(() => {

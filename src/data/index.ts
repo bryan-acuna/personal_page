@@ -56,7 +56,7 @@ export const projectsCards: ProjectCard[] = [
             small: 'bottom',
         },
         icon: 'MdOutlineSportsSoccer',
-        title: 'Ecommerce Shop',
+        title: 'E-commerce Shop',
         description:
             'Full-stack e-commerce platform with product catalog, shopping cart, and secure checkout using Stripe integration.',
     },
