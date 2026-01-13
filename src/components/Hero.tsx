@@ -2,26 +2,15 @@ import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import { letters, professionTexts, socialIcons } from '../data'
 import SocialLinks from './SocialLinks'
+import { useProfessionSwitcher } from '../hooks/useProfessionSwitcher'
 
 const Hero = () => {
+    const { isRotating, currentProfession } =
+        useProfessionSwitcher(professionTexts)
     const [hoveredLetter, setHoveredLetter] = useState<number | null>(null)
-    const [currentProfession, setCurrentProfession] = useState<string>(
-        professionTexts[0]
-    )
-    const [isRotating, setIsRotating] = useState<boolean>(false)
+
     const [imageOpacity, setImageOpacity] = useState<number>(0.5)
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setIsRotating(true)
-            setTimeout(() => {
-                const position = Math.floor(Math.random() * 2)
-                setCurrentProfession(professionTexts[position])
-                setIsRotating(false)
-            }, 300)
-        }, 10000)
-        return () => clearInterval(intervalId)
-    }, [])
     return (
         <div className="w-full h-dvh flex flex-col justify-center items-center isolate">
             <Navbar />

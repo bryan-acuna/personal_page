@@ -1,4 +1,3 @@
-import { BsInstagram, BsLinkedin } from 'react-icons/bs'
 import type { Letter, ProjectCard, SocialIcon } from '../types'
 
 export const letters: Letter[] = [
