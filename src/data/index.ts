@@ -51,6 +51,10 @@ export const socialIcons: SocialIcon[] = [
 export const projectsCards: ProjectCard[] = [
     {
         id: crypto.randomUUID(),
+        position: {
+            large: 'top',
+            small: 'top',
+        },
         icon: 'MdOutlineSportsSoccer',
         title: 'Ecommerce Shop',
         description:
@@ -58,6 +62,10 @@ export const projectsCards: ProjectCard[] = [
     },
     {
         id: crypto.randomUUID(),
+        position: {
+            large: 'top',
+            small: 'top',
+        },
         icon: 'FaStore',
         title: 'Iron Man Updates',
         description:
@@ -65,9 +73,15 @@ export const projectsCards: ProjectCard[] = [
     },
     {
         id: crypto.randomUUID(),
+        position: {
+            large: 'top',
+            small: 'top',
+        },
         icon: 'FaIdCard',
         title: 'Personal Page',
         description:
             'Modern portfolio website showcasing projects, skills, and experience with dark mode support and smooth animations.',
     },
 ]
+
+const projectLinks = ['Github', 'Live Page', 'About']

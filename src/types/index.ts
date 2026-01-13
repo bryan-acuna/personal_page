@@ -48,8 +48,19 @@ export interface ProjectCard {
     githubUrl?: string
     liveUrl?: string
     imageUrl?: string
+    position: {
+        large: position
+        small: position
+    }
 }
 
+type position = 'top' | 'bottom'
+
 export interface ProjectCardProps {
-    project: ProjectCard[]
+    projects: ProjectCard[]
+}
+
+export interface projectLink {
+    link: string
+    icon: IconType
 }
