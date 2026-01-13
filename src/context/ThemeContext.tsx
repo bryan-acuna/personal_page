@@ -5,7 +5,11 @@ import {
     useState,
     type ReactNode,
 } from 'react'
-import type { ThemeContextType } from '../types'
+
+interface ThemeContextType {
+    darkMode: boolean
+    toggleDarkMode: () => void
+}
 
 const THEME_STORAGE_KEY = 'theme-preference'
 
@@ -40,7 +44,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 export const useTheme = (): ThemeContextType => {
     const context = useContext(ThemeContext)
     if (context === undefined) {
-        throw new Error('useThem must be used within a Theme provider')
+        throw new Error('useTheme must be used within a Theme provider')
     }
     return context
 }
