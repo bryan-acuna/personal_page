@@ -52,7 +52,7 @@ export const projectsCards: ProjectCard[] = [
     {
         id: crypto.randomUUID(),
         position: {
-            large: 'top',
+            large: 'bottom',
             small: 'top',
         },
         icon: 'MdOutlineSportsSoccer',
@@ -63,7 +63,7 @@ export const projectsCards: ProjectCard[] = [
     {
         id: crypto.randomUUID(),
         position: {
-            large: 'top',
+            large: 'bottom',
             small: 'top',
         },
         icon: 'FaStore',
@@ -74,7 +74,7 @@ export const projectsCards: ProjectCard[] = [
     {
         id: crypto.randomUUID(),
         position: {
-            large: 'top',
+            large: 'bottom',
             small: 'top',
         },
         icon: 'FaIdCard',
@@ -84,4 +84,4 @@ export const projectsCards: ProjectCard[] = [
     },
 ]
 
-export const projectLinks = ['Github', 'Live Page', 'About']
+export const projectLinks = ['Github', 'Page', 'About'] as const
