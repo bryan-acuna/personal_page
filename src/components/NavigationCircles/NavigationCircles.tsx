@@ -7,8 +7,8 @@ interface NavigationCirclesProps {
 const NavigationCircles = ({ page }: NavigationCirclesProps) => {
     return (
         <div
-            className="h-125 w-[1px] bg-red-500 dark:bg-yellow-500 absolute right-12
-         flex flex-col justify-between items-center transition-colors duration-500"
+            className="h-125 w-px bg-red-500 dark:bg-yellow-500 absolute right-12
+         hidden md:flex flex-col justify-between items-center transition-colors duration-500"
         >
             {navigationItems.map((pageName) => (
                 <div

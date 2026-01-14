@@ -8,7 +8,10 @@ interface SocialLinksProps {
 
 const SocialLinks = ({ icons }: SocialLinksProps) => {
     return (
-        <div className="flex md:gap-12 gap-2 mr-auto">
+        <div
+            className="flex flex-col md:flex-row absolute md:relative md:top-auto top-20
+        left-4 md:left-auto md:gap-12 gap-2 mr-auto"
+        >
             {icons.map((social) => {
                 const IconComponent: IconType = getIcon(social.icon)
                 return (

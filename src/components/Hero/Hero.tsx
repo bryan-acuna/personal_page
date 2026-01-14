@@ -21,9 +21,9 @@ const Hero = () => {
             <div className="flex flex-col md:items-center items-start xl:gap-y-10 gap-y-3 xl:mb-0 md:mb-20 mb-0">
                 <h1
                     className="flex flex-col xl:space-y-8 md:space-y-4 space-y-2
-                xl:text-6xl md:text-4xl text-3xl md:font-normal font-bolder"
+                xl:text-6xl md:text-4xl text-3xl md:font-normal font-bolder mt-8 md:mt-0"
                 >
-                    <span className="flex">
+                    <span className="flex mx-auto md:mx-0">
                         {letters.map((letter, index) => (
                             <span
                                 onMouseEnter={() => setHoveredLetter(index)}
@@ -46,13 +46,15 @@ const Hero = () => {
                             </span>
                         ))}
                     </span>
-                    <span className="xl:text-6xl md:text-4xl text-2xl tracking-wider xl:py-4 py-2 overflow-hidden">
+                    <span className="xl:text-6xl md:text-4xl text-2xl tracking-wider xl:py-4 py-2 overflow-hidden text-center">
                         I'm{' '}
                         <span
                             className={`inline-block xl:w-[380px] md:w-[240px] w-[160px]
                                 lg:ml-6 ml-2 font-extrabold transform transition-transform
                                 ease-out origin-left duration-300 ${
-                                    isRotating ? 'rotate-[100deg]' : 'rotate-0'
+                                    isRotating
+                                        ? 'hidden md:rotate-100'
+                                        : 'rotate-0'
                                 }`}
                         >
                             {currentProfession}
