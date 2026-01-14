@@ -33,12 +33,12 @@ const ProjectCards = ({ projects }: ProjectCardProps) => {
                             />
                             <h3
                                 className="text-red-500 dark:text-yellow-500 transition-colors duration-500
-                            md:text-2xl text-xl font-bold my-4"
+                            md:text-2xl text-md font-bold my-4"
                             >
                                 {project.title}
                             </h3>
                             <p
-                                className="text-gray-900 dark:text-white transition-colors duration-500 md:h-28 h-24
+                                className="text-gray-900 dark:text-white transition-colors duration-500 md:h-30 h-24
                             md:text-base text-sm font-light overflow-y-auto pr-2"
                             >
                                 {project.description}
