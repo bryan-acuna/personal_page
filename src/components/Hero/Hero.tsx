@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import { letters, professionTexts, socialIcons } from '../../data'
+<<<<<<< HEAD
 import SocialLinks from '../SocialLinks'
 import { useProfessionSwitcher } from '../../hooks/useProfessionSwitcher'
+=======
+import SocialLinks from '../SocialMediaLinks/SocialLinks'
+import { useProfessionSwitcher } from '../../hooks/useProfessionSwitcher'
+import NavigationCircles from '../NavigationCircles/NavigationCircles'
+>>>>>>> feature/navigation-circles
 
 const Hero = () => {
     const { isRotating, currentProfession } =
@@ -12,7 +18,10 @@ const Hero = () => {
     const [imageOpacity, setImageOpacity] = useState<number>(0.5)
 
     return (
-        <div className="w-full h-dvh flex flex-col justify-center items-center isolate z-10 relative">
+        <div
+            id="home"
+            className="w-full h-dvh flex flex-col justify-center items-center isolate z-10 relative"
+        >
             <Navbar />
             <div className="flex flex-col md:items-center items-start xl:gap-y-10 gap-y-3 xl:mb-0 md:mb-20 mb-0">
                 <h1
@@ -81,6 +90,7 @@ const Hero = () => {
                     </span>
                 </div>
             </div>
+            <NavigationCircles page="home" />
         </div>
     )
 }

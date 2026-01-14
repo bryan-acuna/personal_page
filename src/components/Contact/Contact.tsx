@@ -1,6 +1,11 @@
+import NavigationCircles from '../NavigationCircles/NavigationCircles'
+
 const Contact = () => {
     return (
-        <div className="h-dvh flex flex-col justify-center items-center">
+        <div
+            id="contact"
+            className="h-dvh flex flex-col justify-center items-center"
+        >
             <h2 className="text-4xl font-light md:mb-32 mb-24">
                 Connect with Me
             </h2>
@@ -26,6 +31,7 @@ const Contact = () => {
                     type="submit"
                 />
             </form>
+            <NavigationCircles page="contact" />
         </div>
     )
 }

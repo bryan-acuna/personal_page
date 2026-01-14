@@ -56,7 +56,7 @@ export const projectsCards: ProjectCard[] = [
             small: 'bottom',
         },
         icon: 'MdOutlineSportsSoccer',
-        title: 'E-commerce Shop',
+        title: 'E-commerce',
         description:
             'Full-stack e-commerce platform with product catalog, shopping cart, and secure checkout using Stripe integration.',
     },
@@ -85,3 +85,15 @@ export const projectsCards: ProjectCard[] = [
 ]
 
 export const projectLinks = ['Github', 'Page', 'About'] as const
+
+export interface NavItem {
+    id: string
+    label: string
+    href: string
+}
+
+export const navigationItems: NavItem[] = [
+    { id: 'home', label: 'Home', href: '#home' },
+    { id: 'projects', label: 'Projects', href: '#projects' },
+    { id: 'contact', label: 'Contact', href: '#contact' },
+]
