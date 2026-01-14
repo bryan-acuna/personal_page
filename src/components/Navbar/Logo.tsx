@@ -1,6 +1,4 @@
-export interface LogoProps {
-    name: string
-}
+import type { LogoProps } from '../../types'
 
 const Logo = ({ name }: LogoProps) => {
     return (

@@ -1,4 +1,4 @@
-import type { Letter, ProjectCard, SocialIcon } from '../types'
+import type { Letter, NavItem, ProjectCard, SocialIcon } from '../types'
 
 export const letters: Letter[] = [
     {
@@ -85,12 +85,6 @@ export const projectsCards: ProjectCard[] = [
 ]
 
 export const projectLinks = ['Github', 'Page', 'About'] as const
-
-export interface NavItem {
-    id: string
-    label: string
-    href: string
-}
 
 export const navigationItems: NavItem[] = [
     { id: 'home', label: 'Home', href: '#home' },

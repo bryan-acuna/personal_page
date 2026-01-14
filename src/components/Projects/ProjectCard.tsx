@@ -1,4 +1,4 @@
-import type { ProjectCard, ProjectCardProps } from '../../types'
+import type { ProjectCard as ProjectCardType, ProjectCardProps } from '../../types'
 import { getIcon } from '../../data/icon'
 import { projectLinks } from '../../data'
 import { useState } from 'react'
@@ -6,11 +6,11 @@ import { useState } from 'react'
 const ProjectCards = ({ projects }: ProjectCardProps) => {
     const [hoverOn, setHoverOn] = useState<null | string>(null)
 
-    const getPositionClass = (card: ProjectCard) => {
+    const getPositionClass = (card: ProjectCardType) => {
         const position = card.position.large
         return position === 'bottom' ? 'bottom-0' : 'top-0'
     }
-    const getPositionHoverClass = (card: ProjectCard) => {
+    const getPositionHoverClass = (card: ProjectCardType) => {
         const position = card.position.large
         return position === 'bottom' ? 'bottom-full' : 'top-full'
     }

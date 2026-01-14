@@ -4,6 +4,7 @@ import { letters, professionTexts, socialIcons } from '../../data'
 import SocialLinks from '../SocialMediaLinks/SocialLinks'
 import { useProfessionSwitcher } from '../../hooks/useProfessionSwitcher'
 import NavigationCircles from '../NavigationCircles/NavigationCircles'
+import { FaSheetPlastic } from 'react-icons/fa6'
 
 const Hero = () => {
     const { isRotating, currentProfession } =
@@ -62,15 +63,17 @@ const Hero = () => {
                         Web Developer
                     </span>
                 </h1>
-                <button
+                <a
+                    href="./Bryan_Acuna_Resume.pdf"
+                    download="Bryan_Acuna_Resume.pdf"
                     className="flex justify-between items-center bg-gray-900 dark:bg-gray-200 xl:w-[400px] md:w-[300px] w-[270px]
                 md:py-1 py-0 md:px-4 px-2 xl:text-2xl md:text-xl text-base text-white dark:text-gray-900 tracking-widest
                 rounded-r-4xl md:ml-0 mx-auto transition-colors duration-500"
                     onMouseEnter={() => setImageOpacity(0.8)}
                     onMouseLeave={() => setImageOpacity(0.5)}
                 >
-                    Read my story <i className="fa-solid fa-book-open"></i>
-                </button>
+                    Download Resume <FaSheetPlastic />
+                </a>
                 <SocialLinks icons={socialIcons} />
                 <div className="lg:w-[600px] md:w-[500px] w-[350px] left-1/2 top-1/4 -translate-x-1/2 absolute -z-10">
                     <img

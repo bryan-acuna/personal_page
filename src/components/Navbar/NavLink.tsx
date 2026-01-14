@@ -1,12 +1,4 @@
-import React from 'react'
-
-export interface NavLinkProps {
-    label: string
-    id: string
-    href: string
-    isActive: boolean
-    onClick: (e: React.MouseEvent<HTMLAnchorElement>, id: string) => void
-}
+import type { NavLinkProps } from '../../types'
 
 const NavLink = ({ label, id, isActive, href, onClick }: NavLinkProps) => {
     return (

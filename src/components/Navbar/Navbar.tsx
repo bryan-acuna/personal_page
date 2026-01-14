@@ -4,12 +4,6 @@ import ThemeToggle from './ThemeToggle'
 import NavLink from './NavLink'
 import { navigationItems } from '../../data'
 
-export interface NavItem {
-    id: string
-    label: string
-    href: string
-}
-
 const Navbar = () => {
     const [activeSection, setActiveSection] = useState('home')
     const isScrollingRef = useRef(false)

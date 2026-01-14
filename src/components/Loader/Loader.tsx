@@ -1,6 +1,4 @@
-interface LoaderProps {
-    isLoading: boolean
-}
+import type { LoaderProps } from '../../types'
 
 const Loader = ({ isLoading }: LoaderProps) => {
     return (

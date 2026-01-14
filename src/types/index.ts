@@ -1,6 +1,6 @@
 import type { IconType } from 'react-icons'
 
-// 1. Define valid icon keys as a const-derived type
+// Icon map for dynamic icon loading
 export const ICON_MAP = {
     INSTAGRAM: 'BsInstagram',
     X_TWITTER: 'FaXTwitter',
@@ -16,12 +16,9 @@ export type IconName = (typeof ICON_MAP)[keyof typeof ICON_MAP]
 
 export type ProjectCategory = 'Web' | 'Mobile' | 'Design'
 
-export interface SocialIcon {
-    icon: IconName
-    url: string
-    label: string
-}
+export type Position = 'top' | 'bottom'
 
+// Data types
 export interface Letter {
     char: string
     img: string
@@ -34,9 +31,10 @@ export interface SocialIcon {
     label: string
 }
 
-export interface ThemeContextType {
-    darkMode: boolean
-    toggleDarkMode: () => void
+export interface NavItem {
+    id: string
+    label: string
+    href: string
 }
 
 export interface ProjectCard {
@@ -49,18 +47,47 @@ export interface ProjectCard {
     liveUrl?: string
     imageUrl?: string
     position: {
-        large: position
-        small: position
+        large: Position
+        small: Position
     }
 }
 
-type position = 'top' | 'bottom'
+export interface ProjectLink {
+    link: string
+    icon: IconType
+}
+
+// Context types
+export interface ThemeContextType {
+    darkMode: boolean
+    toggleDarkMode: () => void
+}
+
+// Component prop types
+export interface LogoProps {
+    name: string
+}
+
+export interface NavLinkProps {
+    label: string
+    id: string
+    href: string
+    isActive: boolean
+    onClick: (e: React.MouseEvent<HTMLAnchorElement>, id: string) => void
+}
 
 export interface ProjectCardProps {
     projects: ProjectCard[]
 }
 
-export interface projectLink {
-    link: string
-    icon: IconType
+export interface NavigationCirclesProps {
+    page: string
+}
+
+export interface SocialLinksProps {
+    icons: SocialIcon[]
+}
+
+export interface LoaderProps {
+    isLoading: boolean
 }

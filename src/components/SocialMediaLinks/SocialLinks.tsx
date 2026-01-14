@@ -1,10 +1,6 @@
-import type { SocialIcon } from '../../types'
+import type { SocialLinksProps } from '../../types'
 import { getIcon } from '../../data/icon'
 import type { IconType } from 'react-icons'
-
-interface SocialLinksProps {
-    icons: SocialIcon[]
-}
 
 const SocialLinks = ({ icons }: SocialLinksProps) => {
     return (

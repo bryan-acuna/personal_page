@@ -1,8 +1,5 @@
 import { navigationItems } from '../../data'
-
-interface NavigationCirclesProps {
-    page: string
-}
+import type { NavigationCirclesProps } from '../../types'
 
 const NavigationCircles = ({ page }: NavigationCirclesProps) => {
     return (
