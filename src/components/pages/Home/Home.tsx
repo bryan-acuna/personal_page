@@ -1,5 +1,4 @@
 // src/components/pages/Home.tsx
-import clsx from 'clsx'
 import type { PageId } from '../../../types'
 import { STATS, SKILL_GROUPS } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
@@ -11,7 +10,6 @@ interface HomeProps {
 }
 
 const Home = ({ onNavigate }: HomeProps) => {
-    const aboutRef = useReveal()
     console.log('stats', STATS)
 
     return (
