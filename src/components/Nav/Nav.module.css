@@ -70,3 +70,17 @@
 .cta:hover {
     background: var(--red-dim);
 }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem 1.5rem;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+    }
+}
