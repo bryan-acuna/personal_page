@@ -1,0 +1,270 @@
+/* src/components/pages/Resume.module.css */
+.section {
+    min-height: 100vh;
+    padding: 9rem 4rem 5rem;
+}
+
+.wrap {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.downloadBar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2.8rem;
+}
+
+.btnPrimary {
+    background: var(--red);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: background 0.3s;
+    cursor: none;
+}
+.btnPrimary:hover {
+    background: var(--red-dim);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2.8rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.name {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 400;
+}
+.name em {
+    color: var(--red);
+    font-style: italic;
+}
+
+.titleLine {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 0.5rem;
+}
+
+.contactInfo {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+.contactInfo a {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: none;
+}
+.contactInfo a:hover {
+    color: var(--white);
+}
+
+.summary {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.88;
+    margin-bottom: 3.2rem;
+    padding: 1.4rem 1.6rem;
+    border-left: 2px solid var(--red);
+    background: rgba(200, 16, 46, 0.03);
+}
+
+.resumeSection {
+    margin-bottom: 3.2rem;
+}
+
+.resumeSectionTitle {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.resumeSectionTitle::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* SKILLS */
+.skillsRow {
+    display: flex;
+    flex-direction: column;
+}
+.skillLine {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--border);
+}
+.skillLine:last-child {
+    border-bottom: 1px solid var(--border);
+}
+.skillLineLabel {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+.skillLineItems {
+    font-size: 0.83rem;
+    color: var(--gray);
+    line-height: 1.72;
+}
+
+/* EXPERIENCE */
+.expItem {
+    margin-bottom: 2.3rem;
+}
+.expHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+}
+.expRole {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+}
+.expDate {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+.expCompany {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+}
+.bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.bullets li {
+    font-size: 0.83rem;
+    color: var(--gray);
+    line-height: 1.72;
+    padding-left: 1.2rem;
+    position: relative;
+}
+.bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+}
+.bullets li strong {
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* EDUCATION */
+.eduGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+.eduItem h4 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+}
+.eduItem p {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    line-height: 1.8;
+}
+.certList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+.certList li {
+    font-size: 0.83rem;
+    color: var(--gray);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.65;
+}
+.certList li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+}
+
+/* FOOTER */
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 2.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footerCopy {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.18);
+    text-transform: uppercase;
+}
+.footerLinks {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+.footerLinks a {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: none;
+}
+.footerLinks a:hover {
+    color: var(--white);
+}
