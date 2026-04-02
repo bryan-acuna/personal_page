@@ -1,7 +1,6 @@
 // src/components/pages/Home.tsx
 import type { PageId } from '../../../types'
 import { STATS, SKILL_GROUPS } from '../../../data'
-import { useReveal } from '../../../hooks/useReveal'
 import styles from './Home.module.css'
 import Ticker from '../../Ticker'
 
