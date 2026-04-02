@@ -1,0 +1,30 @@
+/* src/components/Ticker.module.css */
+.wrap {
+    background: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    padding: 12px 0;
+}
+
+.track {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 26s linear infinite;
+}
+
+.item {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 28px;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.dot {
+    color: var(--red);
+}

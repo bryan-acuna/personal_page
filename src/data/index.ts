@@ -1,93 +1,125 @@
-import type { Letter, NavItem, ProjectCard, SocialIcon } from '../types'
+import type { Project, Job, Stat, SkillGroup } from '../types'
 
-export const letters: Letter[] = [
+export const STATS: Stat[] = [
+    { value: '6', suffix: '+', label: 'Years at P&G' },
+    { value: '1,073', label: 'Test Cases Built' },
+    { value: '7', label: 'Engineers Led' },
+    { value: '70', suffix: '%', label: 'Perf Improvement' },
+]
+
+export const TICKER_ITEMS: string[] = [
+    'React',
+    'TypeScript',
+    'Angular',
+    'Node.js',
+    'Azure',
+    'Redux',
+    'Python',
+    'Supabase',
+    'Tailwind CSS',
+    'CI/CD',
+    'Docker',
+    'Selenium',
+]
+
+export const SKILL_GROUPS: SkillGroup[] = [
     {
-        char: 'H',
-        img: 'https://plus.unsplash.com/premium_photo-1672115680958-54438df0ab82?q=80&w=1484&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        rotate: '-rotate-15',
+        label: 'Frontend',
+        items: 'React · Angular · TypeScript · Redux · RxJS · Tailwind CSS',
     },
     {
-        char: 'E',
-        img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        rotate: 'rotate-15',
+        label: 'Backend & Cloud',
+        items: 'Node.js · Python · Azure Functions · Databricks · Docker',
     },
     {
-        char: 'L',
-        img: 'https://images.unsplash.com/photo-1494806812796-244fe51b774d?q=80&w=1467&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        rotate: '-rotate-15',
+        label: 'Testing',
+        items: 'Selenium · Robot Framework · JUnit · QA Automation',
     },
     {
-        char: 'L',
-        img: 'https://images.unsplash.com/photo-1657249772171-ec9c4f720d27?q=80&w=1621&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        rotate: 'rotate-15',
-    },
-    {
-        char: 'O',
-        img: 'https://images.unsplash.com/photo-1693555738290-4ff01428ecfb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        rotate: '-rotate-15',
+        label: 'DevOps',
+        items: 'Azure CI/CD · SonarQube · Azure DevOps · Confluence',
     },
 ]
 
-export const professionTexts = ['a Front End', 'a Full Stack'] as const
-
-export const socialIcons: SocialIcon[] = [
+export const PROJECTS: Project[] = [
     {
-        icon: 'BsInstagram',
-        url: 'https://instagram.com/your-username',
-        label: 'Instagram',
+        num: '01',
+        title: 'FocusLog — Training Dashboard',
+        description:
+            'Personal training tracker pulling real-time data from the Strava API. Visualizes swim, bike, and run metrics with custom charts and streak tracking.',
+        tags: ['React', 'TypeScript', 'Supabase', 'Strava API'],
     },
     {
-        icon: 'FaXTwitter',
-        url: 'https://twitter.com/your-username',
-        label: 'Twitter',
+        num: '02',
+        title: 'Enterprise Data Grid — P&G',
+        description:
+            'Mission-critical React application with dynamic filtering, server-side pagination, and Handsontable grids — serving 100+ users across P&G business units.',
+        tags: ['React', 'Redux', 'Azure', 'Handsontable'],
     },
     {
-        icon: 'BsLinkedin',
-        url: 'https://www.linkedin.com/in/bryanacuna/',
-        label: 'Linkedin',
+        num: '03',
+        title: 'Rubik 1.0 — Test Automation',
+        description:
+            'End-to-end automated testing strategy with 1,073+ regression test cases. Increased coverage from 0% to 76% and enabled weekly releases.',
+        tags: ['Python', 'Selenium', 'Robot Framework'],
+    },
+    {
+        num: '04',
+        title: 'AGV Middleware Server',
+        description:
+            'Node.js middleware server interfacing with warehouse AGVs — translating XML to JSON in real-time for live inventory tracking.',
+        tags: ['Node.js', 'XML/JSON', 'Real-time'],
     },
 ]
 
-export const projectsCards: ProjectCard[] = [
+export const JOBS: Job[] = [
     {
-        id: crypto.randomUUID(),
-        position: {
-            large: 'bottom',
-            small: 'bottom',
-        },
-        icon: 'MdOutlineSportsSoccer',
-        title: 'E-commerce',
-        description:
-            'Full-stack e-commerce platform with product catalog, shopping cart, and secure checkout using Stripe integration.',
+        role: 'Lead Test Engineer & Front End Engineer',
+        company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
+        date: 'Aug 2024 – Dec 2025',
+        bullets: [
+            'Implemented <strong>1,073+ automated regression test cases</strong> using Python, Selenium, and Robot Framework — increasing coverage from 0% to 76%.',
+            'Refactored and stabilized 100+ automated test suites enabling <strong>3× faster release velocity</strong>.',
+            'Managed migration from Angular 9 to Angular 16 with <strong>zero-downtime deployment</strong>.',
+        ],
     },
     {
-        id: crypto.randomUUID(),
-        position: {
-            large: 'bottom',
-            small: 'bottom',
-        },
-        icon: 'FaStore',
-        title: 'Iron Man Updates',
-        description:
-            'Real-time news aggregator delivering the latest Marvel updates, movie releases, and comic announcements with responsive design.',
+        role: 'Front-End Software Engineer',
+        company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
+        date: 'Aug 2023 – Aug 2024',
+        bullets: [
+            'Built enterprise-grade React components — dynamic filtering, server-side pagination, custom data grids — serving <strong>100+ users</strong>.',
+            'Created production-ready Azure DevOps CI/CD pipelines and MSAL authentication infrastructure.',
+            'Designed <strong>Redux-based state management</strong> architecture improving rendering performance by 70%.',
+        ],
     },
     {
-        id: crypto.randomUUID(),
-        position: {
-            large: 'bottom',
-            small: 'bottom',
-        },
-        icon: 'FaIdCard',
-        title: 'Personal Page',
-        description:
-            'Modern portfolio website showcasing projects, skills, and experience with dark mode support and smooth animations.',
+        role: 'Engineering Manager',
+        company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
+        date: 'Jan 2022 – Aug 2023',
+        bullets: [
+            'Led cross-functional team of <strong>7 engineers</strong>, managing sprint planning and stakeholder communications.',
+            'Orchestrated DAS platform migration with zero production downtime.',
+            'Drove <strong>React adoption as the org standard</strong> across the full D&A organization.',
+        ],
     },
-]
-
-export const projectLinks = ['Github', 'Page', 'About'] as const
-
-export const navigationItems: NavItem[] = [
-    { id: 'home', label: 'Home', href: '#home' },
-    { id: 'projects', label: 'Projects', href: '#projects' },
-    { id: 'contact', label: 'Contact', href: '#contact' },
+    {
+        role: 'Front-End Software Engineer',
+        company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
+        date: 'Aug 2020 – Jan 2022',
+        bullets: [
+            'Implemented serverless metadata tracking using Azure Functions (Python).',
+            'Developed reusable Angular UI components, standardizing UX across the org.',
+            'Implemented reactive state management with RxJS observables.',
+        ],
+    },
+    {
+        role: 'Backend · Automation Engineer',
+        company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
+        date: 'May 2018 – Aug 2020',
+        bullets: [
+            'Automated critical business workflows using WorkFusion and Java.',
+            'Built Node.js middleware server interfacing with warehouse AGVs.',
+        ],
+    },
 ]

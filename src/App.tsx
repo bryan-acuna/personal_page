@@ -1,32 +1,30 @@
-import Hero from './components/Hero/Hero'
-import Projects from './components/Projects/Projects'
-import Contact from './components/Contact/Contact'
-import { ThemeProvider } from './context/ThemeContext'
-import Loader from './components/Loader/Loader'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import type { PageId } from './types'
+import Cursor from './components/Cursor'
+import Nav from './components/Nav'
+import Projects from './components/pages/Projects'
+import Contact from './components/pages/Contact'
+import Resume from './components/pages/Resume'
+import Home from './components/pages/Home'
 
-const App = () => {
-    const [isLoading, setIsLoading] = useState(true)
+function App() {
+    const [page, setPage] = useState<PageId>('home')
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false)
-        }, 2000)
-        return () => clearTimeout(timer)
-    }, [])
+    const navigate = (p: PageId) => {
+        setPage(p)
+        window.scrollTo(0, 0)
+    }
+
     return (
-        <ThemeProvider>
-            <div className="min-h-screen bg-white  dark:bg-gray-900 text-red-500 dark:text-yellow-500 transition-colors duration-500">
-                <Loader isLoading={isLoading} />
-                {!isLoading && (
-                    <>
-                        <Hero />
-                        <Projects />
-                        <Contact />
-                    </>
-                )}
-            </div>
-        </ThemeProvider>
+        <>
+            <Cursor />
+            <div className="top-accent" />
+            <Nav current={page} onNavigate={navigate} />
+            {page === 'home' && <Home onNavigate={navigate} />}
+            {page === 'projects' && <Projects onNavigate={navigate} />}
+            {page === 'resume' && <Resume onNavigate={navigate} />}
+            {page === 'contact' && <Contact onNavigate={navigate} />}
+        </>
     )
 }
 
