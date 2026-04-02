@@ -12,6 +12,7 @@ interface HomeProps {
 
 const Home = ({ onNavigate }: HomeProps) => {
     const aboutRef = useReveal()
+    console.log('stats', STATS)
 
     return (
         <>
@@ -69,7 +70,6 @@ const Home = ({ onNavigate }: HomeProps) => {
                         ))}
                     </div>
                 </div>
-
                 {/* ── GEO CARD ── */}
                 <div className={styles.heroRight}>
                     <div className={styles.heroBgText}>FE</div>
@@ -110,7 +110,6 @@ const Home = ({ onNavigate }: HomeProps) => {
                         </div>
                     </div>
                 </div>
-
                 <div className={styles.scrollHint}>
                     <span className={styles.scrollLine} />
                     Explore
