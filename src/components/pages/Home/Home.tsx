@@ -1,6 +1,9 @@
 // src/components/pages/Home.tsx
+import { useState, useEffect } from 'react'
+import clsx from 'clsx'
 import type { PageId } from '../../../types'
 import { STATS, SKILL_GROUPS } from '../../../data'
+import { useReveal } from '../../../hooks/useReveal'
 import styles from './Home.module.css'
 import Ticker from '../../Ticker'
 
@@ -9,13 +12,37 @@ interface HomeProps {
 }
 
 const Home = ({ onNavigate }: HomeProps) => {
-    console.log('stats', STATS)
+    const aboutRef = useReveal()
+    const [welcomeVisible, setWelcomeVisible] = useState(true)
+    const [welcomeMounted, setWelcomeMounted] = useState(true)
+
+    useEffect(() => {
+        const fadeOut = setTimeout(() => setWelcomeVisible(false), 1600)
+        const unmount = setTimeout(() => setWelcomeMounted(false), 2500)
+        return () => {
+            clearTimeout(fadeOut)
+            clearTimeout(unmount)
+        }
+    }, [])
 
     return (
         <>
+            {/* ── WELCOME SPLASH ── */}
+            {welcomeMounted && (
+                <div
+                    className={clsx(styles.welcome, {
+                        [styles.welcomeHide]: !welcomeVisible,
+                    })}
+                >
+                    <span className={styles.welcomeName}>
+                        Bryan<em>.</em>
+                    </span>
+                </div>
+            )}
+
             {/* ── HERO ── */}
             <div className={styles.heroWrap}>
-                <div className={styles.heroLeft}>
+                <div className={styles.heroContent}>
                     <div className={styles.availBadge}>
                         <span className={styles.badgeDot} />
                         Open to new opportunities
@@ -24,18 +51,16 @@ const Home = ({ onNavigate }: HomeProps) => {
                     <p className={styles.eyebrow}>Senior Frontend Engineer</p>
 
                     <h1 className={styles.title}>
-                        Engineering
+                        <span className={styles.titleAccent}>Frontend</span>
                         <br />
-                        <em>scalable</em>
-                        <br />
-                        frontends.
+                        Engineer.
                     </h1>
 
                     <p className={styles.sub}>
-                        6+ years building enterprise web applications at{' '}
-                        <strong>Procter & Gamble</strong>. React, TypeScript,
-                        Azure — from architecture to production with
-                        zero-downtime deployments.
+                        Hi, I'm <strong>Bryan Acuna</strong>. 6+ years building
+                        enterprise web applications at{' '}
+                        <strong>Procter & Gamble</strong> — React, TypeScript,
+                        and Azure, from architecture to production.
                     </p>
 
                     <div className={styles.ctas}>
@@ -52,69 +77,24 @@ const Home = ({ onNavigate }: HomeProps) => {
                             View Resume
                         </button>
                     </div>
-
-                    <div className={styles.stats}>
-                        {STATS.map((s) => (
-                            <div key={s.label}>
-                                <span className={styles.statNum}>
-                                    {s.value}
-                                    {s.suffix && <em>{s.suffix}</em>}
-                                </span>
-                                <div className={styles.statLabel}>
-                                    {s.label}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
                 </div>
-                {/* ── GEO CARD ── */}
-                <div className={styles.heroRight}>
-                    <section className={styles.aboutSection}>
-                        <p className={styles.eyebrow}>About Me</p>
-                        <div className={styles.aboutGrid}>
-                            <p>
-                                I'm a frontend software engineer with{' '}
-                                <strong>6+ years at Procter & Gamble</strong>,
-                                where I progressed from automation engineer to
-                                lead — architecting, building, and shipping
-                                enterprise-grade applications serving 100+
-                                internal users.
-                            </p>
-                            <p>
-                                I care about clean architecture, measurable
-                                performance, and code that scales. Whether it's
-                                a Redux state design that cuts re-renders by
-                                70%, or migrating Angular 9 to 16 with zero
-                                downtime — I deliver end-to-end.
-                            </p>
-                            <p>
-                                Outside the keyboard I'm training for{' '}
-                                <strong>Ironman 70.3</strong> and building{' '}
-                                <strong>FocusLog</strong> — a Strava-integrated
-                                training tracker in React & TypeScript.
-                            </p>
 
-                            <div className={styles.skillsGrid}>
-                                {SKILL_GROUPS.map((g) => (
-                                    <div
-                                        key={g.label}
-                                        className={styles.skillCell}
-                                    >
-                                        <div className={styles.skillLabel}>
-                                            {g.label}
-                                        </div>
-                                        <div className={styles.skillItems}>
-                                            {g.items}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                {/* ── STATS ── */}
+                <div className={styles.statsCol}>
+                    {STATS.map((s) => (
+                        <div key={s.label} className={styles.statItem}>
+                            <span className={styles.statNum}>
+                                {s.value}
+                                {s.suffix && <em>{s.suffix}</em>}
+                            </span>
+                            <div className={styles.statLabel}>{s.label}</div>
                         </div>
-                    </section>
+                    ))}
                 </div>
+
                 <div className={styles.scrollHint}>
                     <span className={styles.scrollLine} />
-                    Explore
+                    Scroll
                 </div>
             </div>
 
@@ -123,6 +103,58 @@ const Home = ({ onNavigate }: HomeProps) => {
 
             {/* ── DIVIDER ── */}
             <div className={styles.divider} />
+
+            {/* ── ABOUT ── */}
+            <section className={styles.aboutSection}>
+                <div className={styles.aboutGrid}>
+                    <div>
+                        <p className={styles.sectionLabel}>About me</p>
+                        <h2 className={styles.sectionTitle}>
+                            Built for <em>scale.</em>
+                        </h2>
+                    </div>
+
+                    <div
+                        ref={aboutRef as React.RefObject<HTMLDivElement>}
+                        className={clsx('reveal', styles.aboutBody)}
+                    >
+                        <p>
+                            I'm a frontend software engineer with{' '}
+                            <strong>6+ years at Procter & Gamble</strong>, where
+                            I progressed from automation engineer to lead —
+                            architecting, building, and shipping
+                            enterprise-grade applications serving 100+ internal
+                            users.
+                        </p>
+                        <p>
+                            I care about clean architecture, measurable
+                            performance, and code that scales. Whether it's a
+                            Redux state design that cuts re-renders by 70%, or
+                            migrating Angular 9 to 16 with zero downtime — I
+                            deliver end-to-end.
+                        </p>
+                        <p>
+                            Outside the keyboard I'm training for{' '}
+                            <strong>Ironman 70.3</strong> and building{' '}
+                            <strong>FocusLog</strong> — a Strava-integrated
+                            training tracker in React & TypeScript.
+                        </p>
+
+                        <div className={styles.skillsGrid}>
+                            {SKILL_GROUPS.map((g) => (
+                                <div key={g.label} className={styles.skillCell}>
+                                    <div className={styles.skillLabel}>
+                                        {g.label}
+                                    </div>
+                                    <div className={styles.skillItems}>
+                                        {g.items}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <footer className={styles.footer}>
                 <p className={styles.footerCopy}>
