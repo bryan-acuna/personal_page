@@ -34,9 +34,11 @@ const Home = ({ onNavigate }: HomeProps) => {
                         [styles.welcomeHide]: !welcomeVisible,
                     })}
                 >
-                    <span className={styles.welcomeName}>
-                        Bryan Acuna<em>.</em>
-                    </span>
+                    <div className={styles.welcomeInner}>
+                        <span className={styles.welcomeName}>
+                            Bryan Acuna<em>.</em>
+                        </span>
+                    </div>
                 </div>
             )}
 

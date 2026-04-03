@@ -42,6 +42,24 @@
     }
 }
 
+@keyframes writeOn {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0%   0 0); }
+}
+
+@keyframes penSlide {
+    0%   { left: 0%;   opacity: 1; }
+    85%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 0;
+        transform: translateY(-90px);
+    }
+}
+
 /* ── WELCOME SPLASH ── */
 .welcome {
     position: fixed;
@@ -51,22 +69,43 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1;
-    transition: opacity 0.9s ease;
     pointer-events: all;
 }
 
 .welcomeHide {
-    opacity: 0;
+    animation: slideUp 0.75s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+    pointer-events: none;
+}
+
+/* wrapper so ::after pen cursor is relative to text width */
+.welcomeInner {
+    position: relative;
+    display: inline-block;
+}
+
+/* the "pen tip" — a thin red line that sweeps across */
+.welcomeInner::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    bottom: 8%;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--red);
+    left: 0;
+    animation: penSlide 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s forwards;
     pointer-events: none;
 }
 
 .welcomeName {
-    font-family: var(--serif);
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
     font-size: clamp(3.5rem, 9vw, 8rem);
     color: var(--white);
-    letter-spacing: -0.02em;
-    animation: fadeIn 0.6s ease forwards;
+    white-space: nowrap;
+    display: block;
+    clip-path: inset(0 100% 0 0);
+    animation: writeOn 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s forwards;
 }
 
 .welcomeName em {
