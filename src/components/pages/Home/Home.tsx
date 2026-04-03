@@ -35,7 +35,7 @@ const Home = ({ onNavigate }: HomeProps) => {
                     })}
                 >
                     <span className={styles.welcomeName}>
-                        Bryan<em>.</em>
+                        Bryan Acuna<em>.</em>
                     </span>
                 </div>
             )}
