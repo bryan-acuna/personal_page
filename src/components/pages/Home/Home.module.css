@@ -43,14 +43,26 @@
 }
 
 @keyframes writeOn {
-    from { clip-path: inset(0 100% 0 0); }
-    to   { clip-path: inset(0 0%   0 0); }
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0% 0 0);
+    }
 }
 
 @keyframes penSlide {
-    0%   { left: 0%;   opacity: 1; }
-    85%  { opacity: 1; }
-    100% { left: 100%; opacity: 0; }
+    0% {
+        left: 0%;
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 @keyframes slideUp {
