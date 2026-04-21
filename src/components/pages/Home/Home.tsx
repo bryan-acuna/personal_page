@@ -50,7 +50,7 @@ const Home = ({ onNavigate }: HomeProps) => {
                         Open to new opportunities
                     </div>
 
-                    <p className={styles.eyebrow}>Senior Frontend Engineer</p>
+                    <p className={styles.eyebrow}>ABOUT ME</p>
 
                     <h1 className={styles.title}>
                         <span className={styles.titleAccent}>Frontend</span>
@@ -59,7 +59,7 @@ const Home = ({ onNavigate }: HomeProps) => {
                     </h1>
 
                     <p className={styles.sub}>
-                        Hi, I'm <strong>Bryan Acuna</strong>. 6+ years building
+                        Hi, I'm <strong>Bryan Acuna</strong>. 7+ years building
                         enterprise web applications at{' '}
                         <strong>Procter & Gamble</strong> — React, TypeScript,
                         and Azure, from architecture to production.

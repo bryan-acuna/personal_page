@@ -5,6 +5,8 @@ export interface Project {
     title: string
     description: string
     tags: string[]
+    github?: string
+    liveUrl?: string
 }
 
 export interface Job {

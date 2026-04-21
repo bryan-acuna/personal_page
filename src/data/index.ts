@@ -1,10 +1,9 @@
 import type { Project, Job, Stat, SkillGroup } from '../types'
 
 export const STATS: Stat[] = [
-    { value: '6', suffix: '+', label: 'Years at P&G' },
-    { value: '1,073', label: 'Test Cases Built' },
+    { value: '7', suffix: '+', label: 'Engineering Experience' },
+    { value: '5', suffix: '+', label: 'Front End Experience' },
     { value: '7', label: 'Engineers Led' },
-    { value: '70', suffix: '%', label: 'Perf Improvement' },
 ]
 
 export const TICKER_ITEMS: string[] = [
@@ -44,31 +43,39 @@ export const SKILL_GROUPS: SkillGroup[] = [
 export const PROJECTS: Project[] = [
     {
         num: '01',
-        title: 'FocusLog — Training Dashboard',
+        title: 'Training Dashboard',
         description:
             'Personal training tracker pulling real-time data from the Strava API. Visualizes swim, bike, and run metrics with custom charts and streak tracking.',
         tags: ['React', 'TypeScript', 'Supabase', 'Strava API'],
+        github: 'https://github.com/bryan-acuna/iron-man',
+        liveUrl: 'https://bryan-acuna.com',
     },
     {
         num: '02',
-        title: 'Enterprise Data Grid — P&G',
+        title: 'Ecuasystems — E-Commerce Platform',
         description:
-            'Mission-critical React application with dynamic filtering, server-side pagination, and Handsontable grids — serving 100+ users across P&G business units.',
-        tags: ['React', 'Redux', 'Azure', 'Handsontable'],
+            'Full-featured e-commerce platform with product catalog, cart management, checkout flow, and order tracking — built for scale and performance.',
+        tags: ['React', 'TypeScript', 'Node.js', 'Stripe'],
+        github: 'https://github.com/bryanacuna',
+        liveUrl: 'https://bryan-acuna.com',
     },
     {
         num: '03',
-        title: 'Rubik 1.0 — Test Automation',
+        title: 'MovilEC',
         description:
-            'End-to-end automated testing strategy with 1,073+ regression test cases. Increased coverage from 0% to 76% and enabled weekly releases.',
-        tags: ['Python', 'Selenium', 'Robot Framework'],
+            'Ridesharing application with real-time driver matching, live location tracking, and in-app payments — designed for seamless user experience.',
+        tags: ['NextJS', 'Node.js', 'Maps API', 'Real-time'],
+        github: 'https://github.com/bryan-acuna/movilec',
+        liveUrl: 'https://bryan-acuna.com',
     },
     {
         num: '04',
-        title: 'AGV Middleware Server',
+        title: 'Andariegos',
         description:
-            'Node.js middleware server interfacing with warehouse AGVs — translating XML to JSON in real-time for live inventory tracking.',
-        tags: ['Node.js', 'XML/JSON', 'Real-time'],
+            'Web application built to manage and showcase the Anadariegos brand — featuring dynamic content, responsive design, and a modern UI.',
+        tags: ['React', 'TypeScript', 'CSS', 'Responsive'],
+        github: 'https://github.com/bryan-acuna/andariegos',
+        liveUrl: 'https://andariegos.vercel.app',
     },
 ]
 

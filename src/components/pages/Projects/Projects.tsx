@@ -8,28 +8,52 @@ interface ProjectsProps {
     onNavigate: (page: PageId) => void
 }
 
-function ProjectRow({ num, title, description, tags }: (typeof PROJECTS)[0]) {
+function ProjectRow({ num, title, description, tags, github, liveUrl }: (typeof PROJECTS)[0]) {
     const ref = useReveal()
     return (
-        <a
-            href="#"
-            ref={ref as React.RefObject<HTMLAnchorElement>}
+        <div
+            ref={ref as React.RefObject<HTMLDivElement>}
             className={`reveal ${styles.row}`}
-            onClick={(e) => e.preventDefault()}
         >
             <span className={styles.num}>{num}</span>
             <div className={styles.info}>
                 <h3>{title}</h3>
                 <p>{description}</p>
             </div>
-            <div className={styles.tags}>
-                {tags.map((t) => (
-                    <span key={t} className={styles.tag}>
-                        {t}
-                    </span>
-                ))}
+            <div className={styles.right}>
+                <div className={styles.tags}>
+                    {tags.map((t) => (
+                        <span key={t} className={styles.tag}>
+                            {t}
+                        </span>
+                    ))}
+                </div>
+                <div className={styles.actions}>
+                    {github && (
+                        <a
+                            href={github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.actionBtn}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            GitHub ↗
+                        </a>
+                    )}
+                    {liveUrl && (
+                        <a
+                            href={liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            Live ↗
+                        </a>
+                    )}
+                </div>
             </div>
-        </a>
+        </div>
     )
 }
 

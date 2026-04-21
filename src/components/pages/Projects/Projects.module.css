@@ -65,7 +65,7 @@
     transition: padding-left 0.4s ease;
     position: relative;
     overflow: hidden;
-    cursor: none;
+    cursor: default;
 }
 
 .row::before {
@@ -115,12 +115,68 @@
     max-width: 540px;
 }
 
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+    max-width: 180px;
+}
+
 .tags {
     display: flex;
     gap: 0.4rem;
     flex-wrap: wrap;
     justify-content: flex-end;
-    max-width: 180px;
+}
+
+.actions {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.92);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.row:hover .actions {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.actionBtn {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.4rem;
+    border: 1px solid currentColor;
+    color: var(--gray);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.actionBtn:hover {
+    border-color: var(--fg);
+    color: var(--fg);
+}
+
+.actionBtnPrimary {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.actionBtnPrimary:hover {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
 }
 
 .tag {
@@ -190,7 +246,7 @@
         grid-template-columns: 36px 1fr;
     }
 
-    .tags {
+    .right {
         display: none;
     }
 
