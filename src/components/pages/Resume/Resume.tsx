@@ -4,6 +4,8 @@ import { JOBS } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
 import type { PageId } from '../../../types'
 import styles from './Resume.module.css'
+import PageFooter from '../../PageFooter'
+import RichText from '../../RichText'
 
 interface ResumeProps {
     onNavigate: (page: PageId) => void
@@ -139,12 +141,9 @@ const Resume = ({ onNavigate }: ResumeProps) => {
                                 </div>
                                 <ul className={styles.bullets}>
                                     {job.bullets.map((b, i) => (
-                                        <li
-                                            key={i}
-                                            dangerouslySetInnerHTML={{
-                                                __html: b,
-                                            }}
-                                        />
+                                        <li key={i}>
+                                            <RichText text={b} />
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
@@ -187,26 +186,13 @@ const Resume = ({ onNavigate }: ResumeProps) => {
                 </div>
             </section>
 
-            <footer className={styles.footer}>
-                <p className={styles.footerCopy}>
-                    © 2026 Bryan Acuna · Houston, TX
-                </p>
-                <ul className={styles.footerLinks}>
-                    {(['home', 'projects', 'contact'] as PageId[]).map((p) => (
-                        <li key={p}>
-                            <a
-                                href="#"
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    onNavigate(p)
-                                }}
-                            >
-                                {p.charAt(0).toUpperCase() + p.slice(1)}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </footer>
+            <PageFooter
+                onNavigate={onNavigate}
+                exclude="resume"
+                className={styles.footer}
+                copyClassName={styles.footerCopy}
+                linksClassName={styles.footerLinks}
+            />
         </>
     )
 }

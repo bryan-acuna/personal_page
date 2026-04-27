@@ -85,9 +85,9 @@ export const JOBS: Job[] = [
         company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
         date: 'Aug 2024 – Dec 2025',
         bullets: [
-            'Implemented <strong>1,073+ automated regression test cases</strong> using Python, Selenium, and Robot Framework — increasing coverage from 0% to 76%.',
-            'Refactored and stabilized 100+ automated test suites enabling <strong>3× faster release velocity</strong>.',
-            'Managed migration from Angular 9 to Angular 16 with <strong>zero-downtime deployment</strong>.',
+            'Implemented **1,073+ automated regression test cases** using Python, Selenium, and Robot Framework — increasing coverage from 0% to 76%.',
+            'Refactored and stabilized 100+ automated test suites enabling **3× faster release velocity**.',
+            'Managed migration from Angular 9 to Angular 16 with **zero-downtime deployment**.',
         ],
     },
     {
@@ -95,9 +95,9 @@ export const JOBS: Job[] = [
         company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
         date: 'Aug 2023 – Aug 2024',
         bullets: [
-            'Built enterprise-grade React components — dynamic filtering, server-side pagination, custom data grids — serving <strong>100+ users</strong>.',
+            'Built enterprise-grade React components — dynamic filtering, server-side pagination, custom data grids — serving **100+ users**.',
             'Created production-ready Azure DevOps CI/CD pipelines and MSAL authentication infrastructure.',
-            'Designed <strong>Redux-based state management</strong> architecture improving rendering performance by 70%.',
+            'Designed **Redux-based state management** architecture improving rendering performance by 70%.',
         ],
     },
     {
@@ -105,9 +105,9 @@ export const JOBS: Job[] = [
         company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
         date: 'Jan 2022 – Aug 2023',
         bullets: [
-            'Led cross-functional team of <strong>7 engineers</strong>, managing sprint planning and stakeholder communications.',
+            'Led cross-functional team of **7 engineers**, managing sprint planning and stakeholder communications.',
             'Orchestrated DAS platform migration with zero production downtime.',
-            'Drove <strong>React adoption as the org standard</strong> across the full D&A organization.',
+            'Drove **React adoption as the org standard** across the full D&A organization.',
         ],
     },
     {

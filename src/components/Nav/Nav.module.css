@@ -27,18 +27,18 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.97) 0%,
-        transparent 100%
-    );
+    background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+    opacity: 0.97;
     pointer-events: none;
 }
 
 .logo {
+    background: none;
+    border: none;
+    padding: 0;
     font-family: var(--serif);
     font-size: 1.05rem;
-    color: var(--white);
+    color: var(--fg);
     text-decoration: none;
     cursor: pointer;
     position: relative;
@@ -46,7 +46,7 @@
 }
 
 .accent {
-    color: var(--red);
+    color: var(--accent);
     font-style: italic;
 }
 
@@ -60,7 +60,9 @@
 }
 
 .link {
-    color: var(--gray);
+    background: none;
+    border: none;
+    color: var(--text-muted);
     text-decoration: none;
     font-family: var(--mono);
     font-size: 0.63rem;
@@ -79,14 +81,14 @@
     left: 0.6rem;
     right: 0.6rem;
     height: 1.5px;
-    background: var(--red);
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease;
 }
 
 .link:hover {
-    color: var(--white);
+    color: var(--fg);
     background: rgba(200, 16, 46, 0.06);
 }
 
@@ -95,12 +97,35 @@
 }
 
 .active {
-    color: var(--white);
+    color: var(--fg);
     background: rgba(200, 16, 46, 0.08);
 }
 
 .active::after {
     transform: scaleX(1);
+}
+
+/* ── THEME TOGGLE ── */
+.themeToggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--fg);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    position: relative;
+    z-index: 101;
+}
+
+.themeToggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: rotate(15deg);
 }
 
 /* ── HAMBURGER BUTTON ── */
@@ -123,7 +148,7 @@
     display: block;
     width: 100%;
     height: 1.5px;
-    background: var(--white);
+    background: var(--fg);
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform-origin: center;
 }
@@ -144,7 +169,7 @@
 .overlay {
     position: fixed;
     inset: 0;
-    background: var(--black);
+    background: var(--bg);
     z-index: 99;
     display: flex;
     align-items: center;
@@ -182,32 +207,36 @@
 }
 
 .overlayLink {
+    background: none;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 1.2rem;
     padding: 1.6rem 0;
     text-decoration: none;
+    text-align: left;
     font-family: var(--serif);
     font-size: clamp(2rem, 8vw, 3.2rem);
     font-weight: 400;
-    color: var(--white);
+    color: var(--fg);
     transition: color 0.2s;
     width: 100%;
 }
 
 .overlayLink:hover {
-    color: var(--red);
+    color: var(--accent);
 }
 
 .overlayActive {
-    color: var(--red);
+    color: var(--accent);
 }
 
 .overlayNum {
     font-family: var(--mono);
     font-size: 0.55rem;
     letter-spacing: 0.15em;
-    color: var(--red);
+    color: var(--accent);
     margin-top: 0.4rem;
 }
 

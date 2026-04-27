@@ -6,6 +6,7 @@ import { STATS, SKILL_GROUPS } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
 import styles from './Home.module.css'
 import Ticker from '../../Ticker'
+import PageFooter from '../../PageFooter'
 
 interface HomeProps {
     onNavigate: (page: PageId) => void
@@ -158,28 +159,13 @@ const Home = ({ onNavigate }: HomeProps) => {
                 </div>
             </section>
 
-            <footer className={styles.footer}>
-                <p className={styles.footerCopy}>
-                    © 2026 Bryan Acuna · Houston, TX
-                </p>
-                <ul className={styles.footerLinks}>
-                    {(['projects', 'resume', 'contact'] as PageId[]).map(
-                        (p) => (
-                            <li key={p}>
-                                <a
-                                    href="#"
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        onNavigate(p)
-                                    }}
-                                >
-                                    {p.charAt(0).toUpperCase() + p.slice(1)}
-                                </a>
-                            </li>
-                        )
-                    )}
-                </ul>
-            </footer>
+            <PageFooter
+                onNavigate={onNavigate}
+                exclude="home"
+                className={styles.footer}
+                copyClassName={styles.footerCopy}
+                linksClassName={styles.footerLinks}
+            />
         </>
     )
 }

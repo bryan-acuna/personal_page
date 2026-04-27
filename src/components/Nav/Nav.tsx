@@ -1,8 +1,9 @@
-// src/components/Nav.tsx
 import { useState } from 'react'
 import clsx from 'clsx'
+import { Moon, Sun } from 'lucide-react'
 import styles from './Nav.module.css'
 import type { PageId } from '../../types'
+import { useTheme } from '../../context/useTheme'
 
 interface NavProps {
     current: PageId
@@ -18,9 +19,9 @@ const links: { id: PageId; label: string }[] = [
 
 const Nav = ({ current, onNavigate }: NavProps) => {
     const [menuOpen, setMenuOpen] = useState(false)
+    const { darkMode, toggleDarkMode } = useTheme()
 
-    const go = (e: React.MouseEvent, id: PageId) => {
-        e.preventDefault()
+    const go = (id: PageId) => {
         onNavigate(id)
         setMenuOpen(false)
     }
@@ -28,34 +29,51 @@ const Nav = ({ current, onNavigate }: NavProps) => {
     return (
         <>
             <nav className={styles.nav}>
-                <a
-                    href="#"
+                <button
+                    type="button"
                     className={styles.logo}
-                    onClick={(e) => go(e, 'home')}
+                    onClick={() => go('home')}
+                    aria-label="Bryan Acuna — go to home"
                 >
                     Bryan <span className={styles.accent}>Acuna</span>
-                </a>
+                </button>
 
                 {/* Desktop links */}
                 <ul className={styles.links}>
                     {links.map(({ id, label }) => (
                         <li key={id}>
-                            <a
-                                href="#"
-                                data-page={id}
+                            <button
+                                type="button"
                                 className={clsx(styles.link, {
                                     [styles.active]: current === id,
                                 })}
-                                onClick={(e) => go(e, id)}
+                                aria-current={current === id ? 'page' : undefined}
+                                onClick={() => go(id)}
                             >
                                 {label}
-                            </a>
+                            </button>
                         </li>
                     ))}
+                    <li>
+                        <button
+                            type="button"
+                            className={styles.themeToggle}
+                            onClick={toggleDarkMode}
+                            aria-label={
+                                darkMode
+                                    ? 'Switch to light mode'
+                                    : 'Switch to dark mode'
+                            }
+                            aria-pressed={darkMode}
+                        >
+                            {darkMode ? <Sun size={14} /> : <Moon size={14} />}
+                        </button>
+                    </li>
                 </ul>
 
                 {/* Hamburger button — mobile only */}
                 <button
+                    type="button"
                     className={clsx(styles.hamburger, {
                         [styles.hamburgerOpen]: menuOpen,
                     })}
@@ -81,18 +99,19 @@ const Nav = ({ current, onNavigate }: NavProps) => {
                             key={id}
                             style={{ animationDelay: `${0.08 * i}s` }}
                         >
-                            <a
-                                href="#"
+                            <button
+                                type="button"
                                 className={clsx(styles.overlayLink, {
                                     [styles.overlayActive]: current === id,
                                 })}
-                                onClick={(e) => go(e, id)}
+                                aria-current={current === id ? 'page' : undefined}
+                                onClick={() => go(id)}
                             >
                                 <span className={styles.overlayNum}>
                                     0{i + 1}
                                 </span>
                                 {label}
-                            </a>
+                            </button>
                         </li>
                     ))}
                 </ul>

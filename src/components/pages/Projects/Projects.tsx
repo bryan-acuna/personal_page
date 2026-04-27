@@ -3,6 +3,7 @@ import type { PageId } from '../../../types'
 import { PROJECTS } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
 import styles from './Projects.module.css'
+import PageFooter from '../../PageFooter'
 
 interface ProjectsProps {
     onNavigate: (page: PageId) => void
@@ -77,26 +78,13 @@ const Projects = ({ onNavigate }: ProjectsProps) => {
                 </div>
             </section>
 
-            <footer className={styles.footer}>
-                <p className={styles.footerCopy}>
-                    © 2026 Bryan Acuna · Houston, TX
-                </p>
-                <ul className={styles.footerLinks}>
-                    {(['home', 'resume', 'contact'] as PageId[]).map((p) => (
-                        <li key={p}>
-                            <a
-                                href="#"
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    onNavigate(p)
-                                }}
-                            >
-                                {p.charAt(0).toUpperCase() + p.slice(1)}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </footer>
+            <PageFooter
+                onNavigate={onNavigate}
+                exclude="projects"
+                className={styles.footer}
+                copyClassName={styles.footerCopy}
+                linksClassName={styles.footerLinks}
+            />
         </>
     )
 }

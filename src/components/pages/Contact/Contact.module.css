@@ -19,7 +19,7 @@
     font-size: 0.6rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--accent);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -29,7 +29,7 @@
     content: '';
     height: 1px;
     width: 28px;
-    background: var(--red);
+    background: var(--accent);
 }
 
 .heading {
@@ -41,11 +41,11 @@
 }
 .heading em {
     font-style: italic;
-    color: var(--red);
+    color: var(--accent);
 }
 
 .copy {
-    color: var(--gray);
+    color: var(--text-muted);
     line-height: 1.82;
     font-size: 0.9rem;
     max-width: 380px;
@@ -55,7 +55,7 @@
 .emailLink {
     font-family: var(--serif);
     font-size: 1.15rem;
-    color: var(--white);
+    color: var(--fg);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -64,7 +64,7 @@
     cursor: none;
 }
 .emailLink:hover {
-    color: var(--red);
+    color: var(--accent);
 }
 
 .right {
@@ -85,25 +85,25 @@
     font-size: 0.56rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--accent);
     margin-bottom: 0.45rem;
 }
 
 .contactItem a,
 .contactItem span {
     font-size: 0.88rem;
-    color: var(--gray);
+    color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s;
     cursor: none;
 }
 .contactItem a:hover {
-    color: var(--white);
+    color: var(--fg);
 }
 
 .btnPrimary {
-    background: var(--red);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--fg);
     font-family: var(--mono);
     font-size: 0.65rem;
     letter-spacing: 0.12em;
@@ -115,7 +115,7 @@
     margin-top: 0.5rem;
 }
 .btnPrimary:hover {
-    background: var(--red-dim);
+    background: var(--accent-dim);
 }
 
 .footer {
@@ -137,7 +137,10 @@
     gap: 2rem;
     list-style: none;
 }
-.footerLinks a {
+.footerLinks button {
+    background: none;
+    border: none;
+    padding: 0;
     font-family: var(--mono);
     font-size: 0.56rem;
     letter-spacing: 0.12em;
@@ -147,8 +150,8 @@
     transition: color 0.3s;
     cursor: none;
 }
-.footerLinks a:hover {
-    color: var(--white);
+.footerLinks button:hover {
+    color: var(--fg);
 }
 
 /* ── MOBILE ── */

@@ -3,6 +3,7 @@
 import { useReveal } from '../../../hooks/useReveal'
 import type { PageId } from '../../../types'
 import styles from './Contact.module.css'
+import PageFooter from '../../PageFooter'
 
 interface ContactProps {
     onNavigate: (page: PageId) => void
@@ -90,26 +91,13 @@ const Contact = ({ onNavigate }: ContactProps) => {
                 </div>
             </section>
 
-            <footer className={styles.footer}>
-                <p className={styles.footerCopy}>
-                    © 2026 Bryan Acuna · Houston, TX
-                </p>
-                <ul className={styles.footerLinks}>
-                    {(['home', 'projects', 'resume'] as PageId[]).map((p) => (
-                        <li key={p}>
-                            <a
-                                href="#"
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    onNavigate(p)
-                                }}
-                            >
-                                {p.charAt(0).toUpperCase() + p.slice(1)}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </footer>
+            <PageFooter
+                onNavigate={onNavigate}
+                exclude="contact"
+                className={styles.footer}
+                copyClassName={styles.footerCopy}
+                linksClassName={styles.footerLinks}
+            />
         </>
     )
 }
