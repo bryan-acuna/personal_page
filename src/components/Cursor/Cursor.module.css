@@ -2,7 +2,7 @@
 .dot {
     width: 10px;
     height: 10px;
-    background: var(--red);
+    background: var(--accent);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;

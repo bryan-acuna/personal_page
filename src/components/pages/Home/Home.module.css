@@ -76,7 +76,7 @@
 .welcome {
     position: fixed;
     inset: 0;
-    background: var(--black);
+    background: var(--bg);
     z-index: 300;
     display: flex;
     align-items: center;
@@ -103,7 +103,7 @@
     bottom: 8%;
     width: 2px;
     border-radius: 2px;
-    background: var(--red);
+    background: var(--accent);
     left: 0;
     animation: penSlide 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s forwards;
     pointer-events: none;
@@ -113,7 +113,7 @@
     font-family: 'Dancing Script', cursive;
     font-weight: 700;
     font-size: clamp(3.5rem, 9vw, 8rem);
-    color: var(--white);
+    color: var(--fg);
     white-space: nowrap;
     display: block;
     clip-path: inset(0 100% 0 0);
@@ -121,7 +121,7 @@
 }
 
 .welcomeName em {
-    color: var(--red);
+    color: var(--accent);
     font-style: normal;
 }
 
@@ -147,7 +147,7 @@
     font-size: 0.6rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--gray-light);
+    color: var(--text-faint);
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.55rem 1rem;
     margin-bottom: 2.2rem;
@@ -169,7 +169,7 @@
     font-size: 0.62rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--accent);
     margin-bottom: 1.4rem;
     display: flex;
     align-items: center;
@@ -182,7 +182,7 @@
     content: '';
     width: 24px;
     height: 1px;
-    background: var(--red);
+    background: var(--accent);
 }
 
 .title {
@@ -192,19 +192,19 @@
     line-height: 0.95;
     letter-spacing: -0.02em;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--fg);
     opacity: 0;
     animation: fadeUp 0.9s ease 0.4s forwards;
 }
 
 .titleAccent {
-    color: var(--red);
+    color: var(--accent);
 }
 
 .sub {
     margin-top: 2rem;
     font-size: 0.95rem;
-    color: var(--gray);
+    color: var(--text-muted);
     line-height: 1.85;
     max-width: 480px;
     opacity: 0;
@@ -212,7 +212,7 @@
 }
 
 .sub strong {
-    color: var(--white);
+    color: var(--fg);
     font-weight: 500;
 }
 
@@ -225,7 +225,7 @@
 }
 
 .btnPrimary {
-    background: var(--red);
+    background: var(--accent);
     color: #fff;
     font-family: var(--mono);
     font-size: 0.65rem;
@@ -239,13 +239,13 @@
         transform 0.2s;
 }
 .btnPrimary:hover {
-    background: var(--red-dim);
+    background: var(--accent-dim);
     transform: translateY(-2px);
 }
 
 .btnSecondary {
     border: 1px solid rgba(0, 0, 0, 0.2);
-    color: var(--white);
+    color: var(--fg);
     font-family: var(--mono);
     font-size: 0.65rem;
     letter-spacing: 0.12em;
@@ -285,7 +285,7 @@
 .statNum {
     font-family: var(--serif);
     font-size: 2.6rem;
-    color: var(--red);
+    color: var(--accent);
     line-height: 1;
     display: block;
 }
@@ -300,7 +300,7 @@
     font-size: 0.52rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--text-muted);
     margin-top: 0.3rem;
 }
 
@@ -316,7 +316,7 @@
     font-size: 0.55rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--text-muted);
     opacity: 0;
     animation: fadeUp 0.9s ease 1.2s forwards;
 }
@@ -336,7 +336,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: var(--red);
+    background: var(--accent);
     animation: lineSlide 2.2s ease 1.5s infinite;
 }
 
@@ -369,7 +369,7 @@
     font-size: 0.6rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--accent);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -379,7 +379,7 @@
     content: '';
     height: 1px;
     width: 28px;
-    background: var(--red);
+    background: var(--accent);
 }
 
 .sectionTitle {
@@ -390,17 +390,17 @@
 }
 .sectionTitle em {
     font-style: italic;
-    color: var(--red);
+    color: var(--accent);
 }
 
 .aboutBody p {
-    color: var(--gray);
+    color: var(--text-muted);
     line-height: 1.85;
     font-size: 0.93rem;
     margin-bottom: 1.3rem;
 }
 .aboutBody p strong {
-    color: var(--white);
+    color: var(--fg);
     font-weight: 500;
 }
 
@@ -413,7 +413,7 @@
 }
 
 .skillCell {
-    background: var(--black);
+    background: var(--bg);
     padding: 1.4rem;
     transition: background 0.3s;
 }
@@ -426,13 +426,13 @@
     font-size: 0.56rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--accent);
     margin-bottom: 0.6rem;
 }
 
 .skillItems {
     font-size: 0.8rem;
-    color: var(--gray);
+    color: var(--text-muted);
     line-height: 1.9;
 }
 
@@ -459,7 +459,10 @@
     list-style: none;
 }
 
-.footerLinks a {
+.footerLinks button {
+    background: none;
+    border: none;
+    padding: 0;
     font-family: var(--mono);
     font-size: 0.56rem;
     letter-spacing: 0.12em;
@@ -469,8 +472,8 @@
     transition: color 0.3s;
     cursor: pointer;
 }
-.footerLinks a:hover {
-    color: var(--white);
+.footerLinks button:hover {
+    color: var(--fg);
 }
 
 /* ── MOBILE ── */

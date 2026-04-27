@@ -1,20 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#c8102e" />
+
+        <title>Bryan Acuna — Frontend Software Engineer</title>
+        <meta
+            name="description"
+            content="Frontend software engineer with 7+ years building enterprise web applications. React, TypeScript, Azure. Based in Houston, TX."
+        />
+        <link rel="canonical" href="https://bryan-acuna.com/" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <!-- Open Graph (Facebook, LinkedIn, iMessage, Slack) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bryan-acuna.com/" />
+        <meta
+            property="og:title"
+            content="Bryan Acuna — Frontend Software Engineer"
+        />
+        <meta
+            property="og:description"
+            content="7+ years building enterprise React/TypeScript apps at P&G. Open to senior frontend roles."
+        />
+        <meta property="og:image" content="https://bryan-acuna.com/og-image.png" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Bryan Acuna — Frontend Software Engineer"
+        />
+        <meta
+            name="twitter:description"
+            content="7+ years building enterprise React/TypeScript apps at P&G."
+        />
+        <meta name="twitter:image" content="https://bryan-acuna.com/og-image.png" />
+
+        <!-- Fonts: <link> beats CSS @import — browser starts the request while parsing HTML -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Space+Mono&family=Dancing+Script:wght@700&display=swap"
             rel="stylesheet"
         />
-        <title>Portfolio Website</title>
     </head>
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
         <script>
+            // Apply theme before React mounts so there's no flash of wrong theme.
             ;(function () {
                 const stored = localStorage.getItem('theme-preference')
                 const prefersDark = window.matchMedia(

@@ -1,17 +1,23 @@
-// src/components/Ticker.tsx
 import { TICKER_ITEMS } from '../../data'
 import styles from './Ticker.module.css'
 
 const Ticker = () => {
-    // Duplicate for seamless infinite loop
-    const items = [...TICKER_ITEMS, ...TICKER_ITEMS]
+    // Duplicated for seamless infinite loop. Each copy gets a stable, unique key.
+    const items = [
+        ...TICKER_ITEMS.map((text) => ({ id: `a-${text}`, text })),
+        ...TICKER_ITEMS.map((text) => ({ id: `b-${text}`, text })),
+    ]
 
     return (
-        <div className={styles.wrap}>
+        <div
+            className={styles.wrap}
+            role="marquee"
+            aria-label="Technologies and skills"
+        >
             <div className={styles.track}>
-                {items.map((item, i) => (
-                    <div key={i} className={styles.item}>
-                        {item} <span className={styles.dot}>·</span>
+                {items.map(({ id, text }) => (
+                    <div key={id} className={styles.item}>
+                        {text} <span className={styles.dot}>·</span>
                     </div>
                 ))}
             </div>
