@@ -5,10 +5,11 @@
     background: var(--accent);
     border-radius: 50%;
     position: fixed;
+    top: 0;
+    left: 0;
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease;
+    will-change: transform;
 }
 
 .ring {
@@ -17,11 +18,9 @@
     border: 1px solid rgba(200, 16, 46, 0.45);
     border-radius: 50%;
     position: fixed;
+    top: 0;
+    left: 0;
     pointer-events: none;
     z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition:
-        width 0.3s,
-        height 0.3s,
-        border-color 0.3s;
+    will-change: transform, width, height;
 }

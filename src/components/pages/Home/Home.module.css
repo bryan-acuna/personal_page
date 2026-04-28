@@ -194,7 +194,13 @@
     text-transform: uppercase;
     color: var(--fg);
     opacity: 0;
-    animation: fadeUp 0.9s ease 0.4s forwards;
+    perspective: 900px;
+}
+
+.titleChar {
+    display: inline-block;
+    transform-origin: 50% 100%;
+    will-change: transform, filter, opacity;
 }
 
 .titleAccent {

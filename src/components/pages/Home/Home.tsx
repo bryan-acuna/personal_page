@@ -1,6 +1,8 @@
 // src/components/pages/Home.tsx
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
+import gsap from 'gsap'
+import { SplitText } from 'gsap/SplitText'
 import type { PageId } from '../../../types'
 import { STATS, SKILL_GROUPS } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
@@ -8,21 +10,63 @@ import styles from './Home.module.css'
 import Ticker from '../../Ticker'
 import PageFooter from '../../PageFooter'
 
+gsap.registerPlugin(SplitText)
+
+let welcomeShown = false
+
 interface HomeProps {
     onNavigate: (page: PageId) => void
 }
 
 const Home = ({ onNavigate }: HomeProps) => {
     const aboutRef = useReveal()
-    const [welcomeVisible, setWelcomeVisible] = useState(true)
-    const [welcomeMounted, setWelcomeMounted] = useState(true)
+    const titleRef = useRef<HTMLHeadingElement>(null)
+    const [welcomeVisible, setWelcomeVisible] = useState(!welcomeShown)
+    const [welcomeMounted, setWelcomeMounted] = useState(!welcomeShown)
 
     useEffect(() => {
+        if (!welcomeMounted) return
+        welcomeShown = true
         const fadeOut = setTimeout(() => setWelcomeVisible(false), 1600)
         const unmount = setTimeout(() => setWelcomeMounted(false), 2500)
         return () => {
             clearTimeout(fadeOut)
             clearTimeout(unmount)
+        }
+    }, [welcomeMounted])
+
+    useEffect(() => {
+        if (!titleRef.current) return
+
+        const reduced = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches
+
+        const split = SplitText.create(titleRef.current, {
+            type: 'chars',
+            charsClass: styles.titleChar,
+        })
+
+        gsap.set(titleRef.current, { opacity: 1 })
+
+        const delay = welcomeMounted ? 1.6 : 0.2
+
+        const tween = reduced
+            ? gsap.from(split.chars, { opacity: 0, duration: 0.4, delay })
+            : gsap.from(split.chars, {
+                  yPercent: 110,
+                  rotateX: -80,
+                  filter: 'blur(14px)',
+                  opacity: 0,
+                  duration: 1.1,
+                  ease: 'power3.out',
+                  stagger: 0.045,
+                  delay,
+              })
+
+        return () => {
+            tween.kill()
+            split.revert()
         }
     }, [])
 
@@ -53,7 +97,7 @@ const Home = ({ onNavigate }: HomeProps) => {
 
                     <p className={styles.eyebrow}>ABOUT ME</p>
 
-                    <h1 className={styles.title}>
+                    <h1 ref={titleRef} className={styles.title}>
                         <span className={styles.titleAccent}>Frontend</span>
                         <br />
                         Engineer.

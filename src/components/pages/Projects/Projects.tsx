@@ -1,21 +1,21 @@
 // src/components/pages/Projects.tsx
+import { useLayoutEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { PageId } from '../../../types'
 import { PROJECTS } from '../../../data'
-import { useReveal } from '../../../hooks/useReveal'
 import styles from './Projects.module.css'
 import PageFooter from '../../PageFooter'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface ProjectsProps {
     onNavigate: (page: PageId) => void
 }
 
 function ProjectRow({ num, title, description, tags, github, liveUrl }: (typeof PROJECTS)[0]) {
-    const ref = useReveal()
     return (
-        <div
-            ref={ref as React.RefObject<HTMLDivElement>}
-            className={`reveal ${styles.row}`}
-        >
+        <div className={styles.row} data-project-row>
             <span className={styles.num}>{num}</span>
             <div className={styles.info}>
                 <h3>{title}</h3>
@@ -59,19 +59,71 @@ function ProjectRow({ num, title, description, tags, github, liveUrl }: (typeof 
 }
 
 const Projects = ({ onNavigate }: ProjectsProps) => {
+    const sectionRef = useRef<HTMLElement>(null)
+    const headingRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<HTMLDivElement>(null)
+
+    useLayoutEffect(() => {
+        const reduced = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches
+
+        const ctx = gsap.context(() => {
+            const rows =
+                listRef.current?.querySelectorAll<HTMLElement>(
+                    '[data-project-row]'
+                ) ?? []
+
+            rows.forEach((row) => {
+                gsap.from(row, {
+                    y: 60,
+                    opacity: 0,
+                    scale: 0.96,
+                    duration: reduced ? 0.3 : 0.9,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: row,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse',
+                    },
+                })
+            })
+
+            if (
+                !reduced &&
+                headingRef.current &&
+                listRef.current &&
+                window.matchMedia('(min-width: 769px)').matches
+            ) {
+                ScrollTrigger.create({
+                    trigger: headingRef.current,
+                    start: 'top 90px',
+                    endTrigger: listRef.current,
+                    end: 'bottom 90px',
+                    pin: headingRef.current,
+                    pinSpacing: false,
+                })
+            }
+        }, sectionRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
         <>
-            <section className={styles.section}>
-                <p className={styles.sectionLabel}>Selected work</p>
-                <div className={styles.header}>
-                    <h2 className={styles.sectionTitle}>
-                        Recent <em>Projects</em>
-                    </h2>
-                    <span className={styles.count}>
-                        0{PROJECTS.length} Featured
-                    </span>
+            <section ref={sectionRef} className={styles.section}>
+                <div ref={headingRef} className={styles.heading}>
+                    <p className={styles.sectionLabel}>Selected work</p>
+                    <div className={styles.header}>
+                        <h2 className={styles.sectionTitle}>
+                            Recent <em>Projects</em>
+                        </h2>
+                        <span className={styles.count}>
+                            0{PROJECTS.length} Featured
+                        </span>
+                    </div>
                 </div>
-                <div className={styles.list}>
+                <div ref={listRef} className={styles.list}>
                     {PROJECTS.map((p) => (
                         <ProjectRow key={p.num} {...p} />
                     ))}

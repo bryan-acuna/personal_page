@@ -4,6 +4,13 @@
     padding: 9rem 4rem 5rem;
 }
 
+.heading {
+    background: var(--bg);
+    padding-bottom: 1.5rem;
+    z-index: 5;
+    position: relative;
+}
+
 .sectionLabel {
     font-family: var(--mono);
     font-size: 0.6rem;

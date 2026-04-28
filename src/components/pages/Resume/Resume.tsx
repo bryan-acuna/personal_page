@@ -1,11 +1,16 @@
 // src/components/pages/Resume.tsx
 
+import { useLayoutEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { JOBS } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
 import type { PageId } from '../../../types'
 import styles from './Resume.module.css'
 import PageFooter from '../../PageFooter'
 import RichText from '../../RichText'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface ResumeProps {
     onNavigate: (page: PageId) => void
@@ -15,8 +20,55 @@ const Resume = ({ onNavigate }: ResumeProps) => {
     const headerRef = useReveal()
     const summaryRef = useReveal()
     const skillsRef = useReveal()
-    const expRef = useReveal()
     const eduRef = useReveal()
+
+    const timelineRef = useRef<HTMLDivElement>(null)
+    const railLineRef = useRef<SVGLineElement>(null)
+
+    useLayoutEffect(() => {
+        const timeline = timelineRef.current
+        const railLine = railLineRef.current
+        if (!timeline || !railLine) return
+
+        const reduced = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches
+
+        const ctx = gsap.context(() => {
+            gsap.set(railLine, { strokeDashoffset: 1 })
+
+            gsap.to(railLine, {
+                strokeDashoffset: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: timeline,
+                    start: 'top 70%',
+                    end: 'bottom 75%',
+                    scrub: reduced ? false : 0.6,
+                },
+            })
+
+            const items = timeline.querySelectorAll<HTMLElement>(
+                `.${styles.expItem}`
+            )
+            items.forEach((item) => {
+                gsap.from(item, {
+                    y: 20,
+                    opacity: 0,
+                    scale: 0.96,
+                    duration: reduced ? 0.3 : 0.7,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 78%',
+                        toggleActions: 'play none none reverse',
+                    },
+                })
+            })
+        }, timeline)
+
+        return () => ctx.revert()
+    }, [])
 
     return (
         <>
@@ -116,38 +168,67 @@ const Resume = ({ onNavigate }: ResumeProps) => {
                     </div>
 
                     {/* EXPERIENCE */}
-                    <div
-                        ref={expRef as React.RefObject<HTMLDivElement>}
-                        className={`reveal ${styles.resumeSection}`}
-                    >
+                    <div className={styles.resumeSection}>
                         <div className={styles.resumeSectionTitle}>
                             Experience
                         </div>
-                        {JOBS.map((job) => (
-                            <div
-                                key={job.role + job.date}
-                                className={styles.expItem}
+                        <div ref={timelineRef} className={styles.timeline}>
+                            <svg
+                                className={styles.rail}
+                                preserveAspectRatio="none"
+                                viewBox="0 0 2 100"
+                                aria-hidden="true"
                             >
-                                <div className={styles.expHeader}>
-                                    <span className={styles.expRole}>
-                                        {job.role}
-                                    </span>
-                                    <span className={styles.expDate}>
-                                        {job.date}
-                                    </span>
+                                <line
+                                    x1="1"
+                                    y1="0"
+                                    x2="1"
+                                    y2="100"
+                                    pathLength="1"
+                                    className={styles.railTrack}
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                                <line
+                                    ref={railLineRef}
+                                    x1="1"
+                                    y1="0"
+                                    x2="1"
+                                    y2="100"
+                                    pathLength="1"
+                                    className={styles.railLine}
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                            </svg>
+                            {JOBS.map((job) => (
+                                <div
+                                    key={job.role + job.date}
+                                    className={styles.expItem}
+                                >
+                                    <span
+                                        className={styles.expMarker}
+                                        aria-hidden="true"
+                                    />
+                                    <div className={styles.expHeader}>
+                                        <span className={styles.expRole}>
+                                            {job.role}
+                                        </span>
+                                        <span className={styles.expDate}>
+                                            {job.date}
+                                        </span>
+                                    </div>
+                                    <div className={styles.expCompany}>
+                                        {job.company}
+                                    </div>
+                                    <ul className={styles.bullets}>
+                                        {job.bullets.map((b, i) => (
+                                            <li key={i}>
+                                                <RichText text={b} />
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-                                <div className={styles.expCompany}>
-                                    {job.company}
-                                </div>
-                                <ul className={styles.bullets}>
-                                    {job.bullets.map((b, i) => (
-                                        <li key={i}>
-                                            <RichText text={b} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
 
                     {/* EDUCATION */}

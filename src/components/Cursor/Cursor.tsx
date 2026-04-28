@@ -1,55 +1,98 @@
 // src/components/Cursor.tsx
 import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 import styles from './Cursor.module.css'
+
+const MAGNET_STRENGTH = 0.4
 
 const Cursor = () => {
     const dotRef = useRef<HTMLDivElement>(null)
     const ringRef = useRef<HTMLDivElement>(null)
-    const mouse = useRef({ x: 0, y: 0 })
-    const ring = useRef({ x: 0, y: 0 })
 
     useEffect(() => {
+        const dot = dotRef.current
+        const ring = ringRef.current
+        if (!dot || !ring) return
+
+        const reduced = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches
+
+        gsap.set([dot, ring], { xPercent: -50, yPercent: -50, x: -100, y: -100 })
+
+        const dotDur = reduced ? 0 : 0.18
+        const ringDur = reduced ? 0 : 0.55
+
+        const dotX = gsap.quickTo(dot, 'x', { duration: dotDur, ease: 'power3' })
+        const dotY = gsap.quickTo(dot, 'y', { duration: dotDur, ease: 'power3' })
+        const ringX = gsap.quickTo(ring, 'x', {
+            duration: ringDur,
+            ease: 'power3',
+        })
+        const ringY = gsap.quickTo(ring, 'y', {
+            duration: ringDur,
+            ease: 'power3',
+        })
+
+        let hovered: HTMLElement | null = null
+        let lastEvent: { x: number; y: number } | null = null
+
+        const apply = (clientX: number, clientY: number) => {
+            let x = clientX
+            let y = clientY
+
+            if (hovered) {
+                const r = hovered.getBoundingClientRect()
+                const cx = r.left + r.width / 2
+                const cy = r.top + r.height / 2
+                x = x + (cx - x) * MAGNET_STRENGTH
+                y = y + (cy - y) * MAGNET_STRENGTH
+            }
+
+            dotX(x)
+            dotY(y)
+            ringX(x)
+            ringY(y)
+        }
+
         const onMove = (e: MouseEvent) => {
-            mouse.current = { x: e.clientX, y: e.clientY }
-            if (dotRef.current) {
-                dotRef.current.style.left = `${e.clientX}px`
-                dotRef.current.style.top = `${e.clientY}px`
-            }
+            lastEvent = { x: e.clientX, y: e.clientY }
+            apply(e.clientX, e.clientY)
         }
 
-        const onHover = (e: MouseEvent) => {
-            const over = !!(e.target as Element).closest('a, button')
-            if (dotRef.current) {
-                dotRef.current.style.transform = `translate(-50%, -50%) scale(${over ? 2 : 1})`
-            }
-            if (ringRef.current) {
-                ringRef.current.style.width = over ? '52px' : '34px'
-                ringRef.current.style.height = over ? '52px' : '34px'
-                ringRef.current.style.borderColor = over
+        const onOver = (e: MouseEvent) => {
+            const target = (e.target as Element).closest<HTMLElement>(
+                'a, button'
+            )
+            if (target === hovered) return
+
+            hovered = target
+            const over = !!target
+
+            gsap.to(dot, {
+                scale: over ? 2 : 1,
+                duration: 0.25,
+                ease: 'power3',
+            })
+            gsap.to(ring, {
+                width: over ? 52 : 34,
+                height: over ? 52 : 34,
+                borderColor: over
                     ? 'rgba(200,16,46,0.8)'
-                    : 'rgba(200,16,46,0.45)'
-            }
-        }
+                    : 'rgba(200,16,46,0.45)',
+                duration: 0.3,
+                ease: 'power3',
+            })
 
-        let raf: number
-        const animateRing = () => {
-            ring.current.x += (mouse.current.x - ring.current.x) * 0.12
-            ring.current.y += (mouse.current.y - ring.current.y) * 0.12
-            if (ringRef.current) {
-                ringRef.current.style.left = `${ring.current.x}px`
-                ringRef.current.style.top = `${ring.current.y}px`
-            }
-            raf = requestAnimationFrame(animateRing)
+            if (lastEvent) apply(lastEvent.x, lastEvent.y)
         }
 
         document.addEventListener('mousemove', onMove)
-        document.addEventListener('mouseover', onHover)
-        raf = requestAnimationFrame(animateRing)
+        document.addEventListener('mouseover', onOver)
 
         return () => {
             document.removeEventListener('mousemove', onMove)
-            document.removeEventListener('mouseover', onHover)
-            cancelAnimationFrame(raf)
+            document.removeEventListener('mouseover', onOver)
         }
     }, [])
 
