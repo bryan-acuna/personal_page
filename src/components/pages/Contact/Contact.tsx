@@ -1,5 +1,3 @@
-// src/components/pages/Contact.tsx
-
 import { useReveal } from '../../../hooks/useReveal'
 import type { PageId } from '../../../types'
 import styles from './Contact.module.css'

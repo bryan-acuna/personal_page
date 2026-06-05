@@ -1,4 +1,3 @@
-// src/components/pages/Home.tsx
 import { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import gsap from 'gsap'
@@ -68,6 +67,9 @@ const Home = ({ onNavigate }: HomeProps) => {
             tween.kill()
             split.revert()
         }
+        // Run once on mount: `welcomeMounted` only sets the initial delay and
+        // must not re-trigger the title animation when the splash unmounts.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -204,7 +206,7 @@ const Home = ({ onNavigate }: HomeProps) => {
                     >
                         <p>
                             I'm a frontend software engineer with{' '}
-                            <strong>6+ years at Procter & Gamble</strong>, where
+                            <strong>7+ years at Procter & Gamble</strong>, where
                             I progressed from automation engineer to lead —
                             architecting, building, and shipping
                             enterprise-grade applications serving 100+ internal

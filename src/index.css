@@ -12,6 +12,9 @@
     --accent-dim: #a0001c;
     --accent-soft: rgba(200, 16, 46, 0.06);
 
+    /* Translucent scrim for hover overlays — matches page background per theme */
+    --overlay: rgba(255, 255, 255, 0.92);
+
     /* Type scale */
     --mono: 'Space Mono', monospace;
     --serif: 'DM Serif Display', serif;
@@ -26,6 +29,7 @@ html.dark {
     --text-muted: #a8a8a8;
     --text-faint: #888888;
     --accent-soft: rgba(200, 16, 46, 0.12);
+    --overlay: rgba(12, 12, 12, 0.92);
 }
 
 *,
@@ -87,49 +91,7 @@ body::after {
     background-size: 200px 200px;
 }
 
-/* Reusable keyframes */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(22px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes pulse {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.35;
-    }
-}
-
-@keyframes lineSlide {
-    0% {
-        left: -100%;
-    }
-    50% {
-        left: 0%;
-    }
-    100% {
-        left: 100%;
-    }
-}
-
+/* Ticker marquee — referenced by Ticker.module.css (global so it can be shared) */
 @keyframes ticker {
     0% {
         transform: translateX(0);
@@ -137,16 +99,4 @@ body::after {
     100% {
         transform: translateX(-50%);
     }
-}
-
-/* Reset for buttons used as nav/links — keeps native semantics, removes default styling */
-.unstyled-button {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-    text-align: inherit;
 }

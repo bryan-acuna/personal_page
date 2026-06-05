@@ -1,5 +1,3 @@
-// src/components/pages/Resume.tsx
-
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -120,7 +118,7 @@ const Resume = ({ onNavigate }: ResumeProps) => {
                         ref={summaryRef as React.RefObject<HTMLDivElement>}
                         className={`reveal ${styles.summary}`}
                     >
-                        Front-end engineer with 6+ years at P&G, building
+                        Front-end engineer with 7+ years at P&G, building
                         enterprise web applications from concept to production.
                         Architected and delivered 2 critical applications
                         (Angular & React) serving 100+ internal users, reducing

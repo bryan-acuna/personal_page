@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
             'Personal training tracker pulling real-time data from the Strava API. Visualizes swim, bike, and run metrics with custom charts and streak tracking.',
         tags: ['React', 'TypeScript', 'Supabase', 'Strava API'],
         github: 'https://github.com/bryan-acuna/iron-man',
-        liveUrl: 'https://bryan-acuna.com',
+        liveUrl: 'https://www.bacunaevolution.com/',
     },
     {
         num: '02',
@@ -63,25 +63,25 @@ export const PROJECTS: Project[] = [
             'Full-featured e-commerce platform with product catalog, cart management, checkout flow, and order tracking — built for scale and performance.',
         tags: ['React', 'TypeScript', 'Node.js', 'Stripe'],
         github: 'https://github.com/bryanacuna',
-        liveUrl: 'https://bryan-acuna.com',
+        liveUrl: 'http://www.ecua-system.com/',
     },
     {
         num: '03',
-        title: 'MovilEC',
+        title: 'Nutrisport',
         description:
-            'Ridesharing application with real-time driver matching, live location tracking, and in-app payments — designed for seamless user experience.',
-        tags: ['NextJS', 'Node.js', 'Maps API', 'Real-time'],
-        github: 'https://github.com/bryan-acuna/movilec',
-        liveUrl: 'https://bryan-acuna.com',
+            'E-commerce store for running fuel and endurance nutrition — stocking brands like Maurten and Tailwind, with product catalog, cart, and checkout.',
+        tags: ['React', 'TypeScript', 'Node.js', 'Stripe'],
+        github: 'https://github.com/bryan-acuna/nutrisport',
+        liveUrl: 'https://www.nutriprosport-store.com/',
     },
     {
         num: '04',
         title: 'Andariegos',
         description:
-            'Web application built to manage and showcase the Anadariegos brand — featuring dynamic content, responsive design, and a modern UI.',
+            'Web application built to manage and showcase the Andariegos brand — featuring dynamic content, responsive design, and a modern UI.',
         tags: ['React', 'TypeScript', 'CSS', 'Responsive'],
         github: 'https://github.com/bryan-acuna/andariegos',
-        liveUrl: 'https://andariegos.vercel.app',
+        liveUrl: 'https://www.andariegos.studio/',
     },
 ]
 

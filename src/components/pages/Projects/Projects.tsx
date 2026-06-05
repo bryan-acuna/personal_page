@@ -1,9 +1,9 @@
-// src/components/pages/Projects.tsx
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { PageId } from '../../../types'
 import { PROJECTS } from '../../../data'
+import { prefersReducedMotion } from '../../../lib/motion'
 import styles from './Projects.module.css'
 import PageFooter from '../../PageFooter'
 
@@ -64,9 +64,7 @@ const Projects = ({ onNavigate }: ProjectsProps) => {
     const listRef = useRef<HTMLDivElement>(null)
 
     useLayoutEffect(() => {
-        const reduced = window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches
+        const reduced = prefersReducedMotion()
 
         const ctx = gsap.context(() => {
             const rows =
