@@ -1,4 +1,10 @@
-import type { Project, Job, Stat, SkillGroup } from '../types'
+import type {
+    Project,
+    Job,
+    Stat,
+    SkillGroup,
+    LeadershipRole,
+} from '../types'
 
 export const STATS: Stat[] = [
     { value: '7', suffix: '+', label: 'Engineering Experience' },
@@ -81,23 +87,19 @@ export const PROJECTS: Project[] = [
 
 export const JOBS: Job[] = [
     {
-        role: 'Lead Test Engineer & Front End Engineer',
-        company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
-        date: 'Aug 2024 – Dec 2025',
-        bullets: [
-            'Implemented **1,073+ automated regression test cases** using Python, Selenium, and Robot Framework — increasing coverage from 0% to 76%.',
-            'Refactored and stabilized 100+ automated test suites enabling **3× faster release velocity**.',
-            'Managed migration from Angular 9 to Angular 16 with **zero-downtime deployment**.',
-        ],
-    },
-    {
         role: 'Front-End Software Engineer',
         company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
-        date: 'Aug 2023 – Aug 2024',
+        date: 'Aug 2023 – Dec 2025',
         bullets: [
-            'Built enterprise-grade React components — dynamic filtering, server-side pagination, custom data grids — serving **100+ users**.',
-            'Created production-ready Azure DevOps CI/CD pipelines and MSAL authentication infrastructure.',
-            'Designed **Redux-based state management** architecture improving rendering performance by 70%.',
+            'Built enterprise-grade React components including dynamic filtering, server-side pagination, and custom data grids, now serving **100+ users** across multiple business units for mission-critical data extraction.',
+            'Designed **Redux-based state management** architecture that improved rendering performance by **70%** and enabled scalable feature development across the application.',
+            'Created production-ready infrastructure including Azure DevOps CI/CD pipelines, SonarQube code quality gates, MSAL authentication, and mock API services for development.',
+            'Implemented **1,073+ automated regression test cases** using Python, Selenium, Playwright, and Robot Framework, increasing test coverage from **0% to 76%** and reducing regression testing time by more than half, enabling weekly releases vs. monthly.',
+            'Refactored and stabilized 100+ automated test suites, enabling **3× faster release velocity** to production.',
+            'Designed end-to-end testing strategy for Rubik 1.0, documented in Confluence for organization-wide adoption.',
+            'Managed technical migration from **Angular 9 to Angular 16**, modernizing framework dependencies while maintaining zero-downtime deployment for enterprise users.',
+            'Supported UAT, Cutover, and Hypercare through detailed updates and comprehensive bug analysis.',
+            'Authored comprehensive Handsontable and component documentation in Confluence, reducing duplicate effort and enabling easier team adoption.',
         ],
     },
     {
@@ -105,9 +107,11 @@ export const JOBS: Job[] = [
         company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
         date: 'Jan 2022 – Aug 2023',
         bullets: [
-            'Led cross-functional team of **7 engineers**, managing sprint planning and stakeholder communications.',
-            'Orchestrated DAS platform migration with zero production downtime.',
-            'Drove **React adoption as the org standard** across the full D&A organization.',
+            'Led cross-functional team of **7 engineers** delivering GLMD subproduct features, managing sprint planning, resource allocation, and stakeholder communications.',
+            'Orchestrated DAS platform migration, refactoring data pipelines and implementing Azure DevOps CI/CD infrastructure with zero production downtime.',
+            'Achieved **100% fulfillment rate** for all new Planogram requests by optimizing POS data infrastructure, resulting in zero post-launch issues.',
+            'Led quarterly PI planning sessions, resource onboarding for **5+ new hires**, and technical training programs improving team velocity.',
+            'Evaluated frontend frameworks and drove **React adoption as the org standard**; presented migration strategy to leadership and executed the full D&A organization transition.',
         ],
     },
     {
@@ -115,9 +119,9 @@ export const JOBS: Job[] = [
         company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
         date: 'Aug 2020 – Jan 2022',
         bullets: [
-            'Implemented serverless metadata tracking using Azure Functions (Python).',
-            'Developed reusable Angular UI components, standardizing UX across the org.',
-            'Implemented reactive state management with RxJS observables.',
+            'Implemented serverless metadata tracking system using Azure Functions (Python), enabling real-time change auditing across data analytics platforms.',
+            'Developed and deployed reusable Angular UI components, pagination controls, modals, and toast notifications, standardizing UX across the organization.',
+            'Implemented reactive state management using RxJS observables, reducing component re-renders and improving application responsiveness.',
         ],
     },
     {
@@ -125,8 +129,23 @@ export const JOBS: Job[] = [
         company: 'Procter & Gamble · IT Data & Analytics · Cincinnati, OH',
         date: 'May 2018 – Aug 2020',
         bullets: [
-            'Automated critical business workflows using WorkFusion and Java.',
-            'Built Node.js middleware server interfacing with warehouse AGVs.',
+            'Developed and deployed automated workflows using WorkFusion and Java for critical business systems including Planview, reducing manual processing time and eliminating data entry errors.',
+            'Built Node.js middleware server to interface with warehouse AGVs, translating XML messages to JSON format and enabling real-time inventory tracking for distribution operations.',
+        ],
+    },
+]
+
+export const LEADERSHIP: LeadershipRole[] = [
+    {
+        role: 'Lead Recruiter for Texas',
+        bullets: [
+            'Developed recruiting strategy and assessment criteria for identifying high-potential IT and engineering talent.',
+        ],
+    },
+    {
+        role: 'Youth Technology Program Lead',
+        bullets: [
+            'Directed a 3-month IT internship program for **5 high-school students**, providing daily mentorship, career coaching, and professional development for underrepresented talent.',
         ],
     },
 ]

@@ -22,7 +22,7 @@ const PageFooter = ({
     linksClassName,
 }: PageFooterProps) => (
     <footer className={className}>
-        <p className={copyClassName}>© 2026 Bryan Acuna · Houston, TX</p>
+        <p className={copyClassName}>© 2026 Bryan Acuna · New York, NY</p>
         <ul className={linksClassName}>
             {ALL_PAGES.filter((p) => p !== exclude).map((p) => (
                 <li key={p}>

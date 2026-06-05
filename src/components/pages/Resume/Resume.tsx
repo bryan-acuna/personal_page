@@ -3,8 +3,9 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { JOBS } from '../../../data'
+import { JOBS, LEADERSHIP } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
+import { prefersReducedMotion } from '../../../lib/motion'
 import type { PageId } from '../../../types'
 import styles from './Resume.module.css'
 import PageFooter from '../../PageFooter'
@@ -21,6 +22,7 @@ const Resume = ({ onNavigate }: ResumeProps) => {
     const summaryRef = useReveal()
     const skillsRef = useReveal()
     const eduRef = useReveal()
+    const leadershipRef = useReveal()
 
     const timelineRef = useRef<HTMLDivElement>(null)
     const railLineRef = useRef<SVGLineElement>(null)
@@ -30,9 +32,7 @@ const Resume = ({ onNavigate }: ResumeProps) => {
         const railLine = railLineRef.current
         if (!timeline || !railLine) return
 
-        const reduced = window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches
+        const reduced = prefersReducedMotion()
 
         const ctx = gsap.context(() => {
             gsap.set(railLine, { strokeDashoffset: 1 })
@@ -120,14 +120,14 @@ const Resume = ({ onNavigate }: ResumeProps) => {
                         ref={summaryRef as React.RefObject<HTMLDivElement>}
                         className={`reveal ${styles.summary}`}
                     >
-                        Front-end engineer with 6+ years at P&G, built
+                        Front-end engineer with 6+ years at P&G, building
                         enterprise web applications from concept to production.
                         Architected and delivered 2 critical applications
                         (Angular & React) serving 100+ internal users, reducing
                         manual data processing time and improving operational
                         efficiency. Expert in modern frontend frameworks, Azure
                         cloud infrastructure, CI/CD pipelines, and leading
-                        cross-functional teams.
+                        cross-functional teams to deliver scalable solutions.
                     </div>
 
                     {/* SKILLS */}
@@ -148,7 +148,7 @@ const Resume = ({ onNavigate }: ResumeProps) => {
                                 },
                                 {
                                     label: 'Testing',
-                                    items: 'Selenium, Robot Framework, JUnit, UI Testing, QA Automation',
+                                    items: 'Selenium, Playwright, Robot Framework, JUnit, UI Testing, QA Automation',
                                 },
                                 {
                                     label: 'DevOps & Tools',
@@ -262,6 +262,35 @@ const Resume = ({ onNavigate }: ResumeProps) => {
                                     Associate (2025)
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+
+                    {/* LEADERSHIP */}
+                    <div
+                        ref={leadershipRef as React.RefObject<HTMLDivElement>}
+                        className={`reveal ${styles.resumeSection}`}
+                    >
+                        <div className={styles.resumeSectionTitle}>
+                            Leadership Experience
+                        </div>
+                        <div className={styles.leadershipList}>
+                            {LEADERSHIP.map((role) => (
+                                <div
+                                    key={role.role}
+                                    className={styles.leadershipItem}
+                                >
+                                    <h4 className={styles.leadershipRole}>
+                                        {role.role}
+                                    </h4>
+                                    <ul className={styles.bullets}>
+                                        {role.bullets.map((b, i) => (
+                                            <li key={i}>
+                                                <RichText text={b} />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

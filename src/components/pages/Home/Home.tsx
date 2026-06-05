@@ -6,6 +6,7 @@ import { SplitText } from 'gsap/SplitText'
 import type { PageId } from '../../../types'
 import { STATS, SKILL_GROUPS } from '../../../data'
 import { useReveal } from '../../../hooks/useReveal'
+import { prefersReducedMotion } from '../../../lib/motion'
 import styles from './Home.module.css'
 import Ticker from '../../Ticker'
 import PageFooter from '../../PageFooter'
@@ -21,6 +22,7 @@ interface HomeProps {
 const Home = ({ onNavigate }: HomeProps) => {
     const aboutRef = useReveal()
     const titleRef = useRef<HTMLHeadingElement>(null)
+    const statNumRefs = useRef<(HTMLSpanElement | null)[]>([])
     const [welcomeVisible, setWelcomeVisible] = useState(!welcomeShown)
     const [welcomeMounted, setWelcomeMounted] = useState(!welcomeShown)
 
@@ -38,9 +40,7 @@ const Home = ({ onNavigate }: HomeProps) => {
     useEffect(() => {
         if (!titleRef.current) return
 
-        const reduced = window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches
+        const reduced = prefersReducedMotion()
 
         const split = SplitText.create(titleRef.current, {
             type: 'chars',
@@ -67,6 +67,37 @@ const Home = ({ onNavigate }: HomeProps) => {
         return () => {
             tween.kill()
             split.revert()
+        }
+    }, [])
+
+    useEffect(() => {
+        const reduced = prefersReducedMotion()
+
+        const tweens = STATS.map((s, i) => {
+            const el = statNumRefs.current[i]
+            if (!el) return null
+            const target = parseInt(s.value, 10)
+            if (Number.isNaN(target)) return null
+            if (reduced) {
+                el.textContent = String(target)
+                return null
+            }
+            const obj = { n: 0 }
+            el.textContent = '0'
+            return gsap.to(obj, {
+                n: target,
+                duration: 1.6,
+                ease: 'power2.out',
+                delay: 1.2,
+                snap: { n: 1 },
+                onUpdate: () => {
+                    el.textContent = String(obj.n)
+                },
+            })
+        })
+
+        return () => {
+            tweens.forEach((t) => t?.kill())
         }
     }, [])
 
@@ -128,10 +159,16 @@ const Home = ({ onNavigate }: HomeProps) => {
 
                 {/* ── STATS ── */}
                 <div className={styles.statsCol}>
-                    {STATS.map((s) => (
+                    {STATS.map((s, i) => (
                         <div key={s.label} className={styles.statItem}>
                             <span className={styles.statNum}>
-                                {s.value}
+                                <span
+                                    ref={(el) => {
+                                        statNumRefs.current[i] = el
+                                    }}
+                                >
+                                    {s.value}
+                                </span>
                                 {s.suffix && <em>{s.suffix}</em>}
                             </span>
                             <div className={styles.statLabel}>{s.label}</div>

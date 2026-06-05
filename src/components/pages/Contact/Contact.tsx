@@ -74,7 +74,7 @@ const Contact = ({ onNavigate }: ContactProps) => {
 
                         <div className={styles.contactItem}>
                             <div className={styles.contactLabel}>Location</div>
-                            <span>Houston, TX · Open to remote</span>
+                            <span>New York, NY · Open to remote</span>
                         </div>
 
                         <div

@@ -26,3 +26,8 @@ export interface SkillGroup {
     label: string
     items: string
 }
+
+export interface LeadershipRole {
+    role: string
+    bullets: string[]
+}

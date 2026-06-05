@@ -279,6 +279,23 @@
     color: var(--accent);
 }
 
+/* LEADERSHIP */
+.leadershipList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+.leadershipItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.leadershipRole {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
 /* FOOTER */
 .footer {
     border-top: 1px solid var(--border);
